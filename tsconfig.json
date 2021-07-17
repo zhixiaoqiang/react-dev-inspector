@@ -1,32 +1,75 @@
+/**
+ * `files` / `include` / `exclude` / `paths` fields will be overwrite when inheritance;
+ * `references` will not inheritance;
+ *
+ * `rootDir` / `baseUrl` / `outDir` will be resolved relative to the configuration file they originated in,
+ *   rather than only treat as string, so don't set those in base config.
+ */
 {
   "compilerOptions": {
     "module": "esnext",
     "noEmit": true,
+    "noEmitOnError": false,
+    "declaration": true,
+    "declarationMap": false,
     "moduleResolution": "node",
     "target": "esnext",
-    "emitDecoratorMetadata": true,
-    "experimentalDecorators": true,
-    "strictNullChecks": true,
-    "skipLibCheck": true,
     "lib": [
       "dom.iterable",
       "dom",
-      "esnext"
+      "esnext",
     ],
+    "resolveJsonModule": true,
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "strictNullChecks": true,
+    "noImplicitAny": true,
+    "noUnusedLocals": true,
+    "skipLibCheck": true,
+    "sourceMap": false,
     "jsx": "react",
     "allowJs": true,
+    // https://www.typescriptlang.org/tsconfig#composite
+    "composite": false,
+    // https://www.typescriptlang.org/tsconfig#incremental
+    "incremental": false,
+    // https://www.typescriptlang.org/tsconfig#preserveWatchOutput
+    "preserveWatchOutput": true,
+    // https://www.typescriptlang.org/tsconfig#esModuleInterop
     "esModuleInterop": true,
-    "resolveJsonModule": true,
-    "sourceMap": false,
-    "allowSyntheticDefaultImports": true
+    // https://www.typescriptlang.org/tsconfig#allowSyntheticDefaultImports
+    "allowSyntheticDefaultImports": true,
+    // https://www.typescriptlang.org/tsconfig#isolatedModules
+    "isolatedModules": true,
+    /**
+     * https://www.typescriptlang.org/tsconfig#useDefineForClassFields
+     * https://www.typescriptlang.org/docs/handbook/release-notes/typescript-3-7.html#the-usedefineforclassfields-flag-and-the-declare-property-modifier
+     */
+    "useDefineForClassFields": true,
+    // https://www.typescriptlang.org/tsconfig#downlevelIteration
+    "downlevelIteration": true,
+    "strict": true,
+    "forceConsistentCasingInFileNames": true,
   },
   "exclude": [
     "node_modules",
-    "/scripts",
-    "/dist",
-    "/build",
-    "/es",
-    "/lib",
-    "/plugins"
-  ]
+    "dist",
+    "es",
+    "lib",
+    "**/mock/**/*.ts",
+    "**/*.spec.ts",
+    "**/*.test.ts"
+  ],
+  /**
+   * these options are overrides used only by ts-node
+   * https://github.com/TypeStrong/ts-node
+   */
+  "ts-node": {
+    // It is faster to skip typechecking.
+    // Remove if you want ts-node to do typechecking.
+    "transpileOnly": true,
+    "compilerOptions": {
+      "module": "commonjs",
+    },
+  },
 }
