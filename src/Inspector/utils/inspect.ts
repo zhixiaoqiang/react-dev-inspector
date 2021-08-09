@@ -102,16 +102,23 @@ export const getCodeInfoFromFiber = (fiber?: Fiber): CodeInfo | undefined => (
 )
 
 /**
- * try to get react component reference fiber from the dom fiber
+ * give a `base` dom fiber,
+ * and will try to get the human friendly react component `reference` fiber from it;
  *
- * fiber examples see below:
+ * rules and examples see below:
  * *******************************************************
+ *
+ * if parent is html native tag, `reference` is considered to be as same as `base`
  *
  *  div                                       div
  *    └─ h1                                     └─ h1  (<--base) <--reference
  *      └─ span  (<--base) <--reference           └─ span
  *
  * *******************************************************
+ *
+ * if parent is NOT html native tag,
+ *   and parent ONLY have one child (the `base` itself),
+ *   then `reference` is considered to be the parent.
  *
  *  Title  <--reference                       Title
  *    └─ h1  (<--base)                          └─ h1  (<--base) <--reference
@@ -120,6 +127,9 @@ export const getCodeInfoFromFiber = (fiber?: Fiber): CodeInfo | undefined => (
  *
  * *******************************************************
  *
+ * while follow the last one,
+ *   "parent" is considered to skip continuous Provider/Customer/ForwardRef components
+ *
  *  Title  <- reference                       Title  <- reference
  *    └─ TitleName [ForwardRef]                 └─ TitleName [ForwardRef]
  *      └─ Context.Customer                       └─ Context.Customer
@@ -127,8 +137,6 @@ export const getCodeInfoFromFiber = (fiber?: Fiber): CodeInfo | undefined => (
  *          └─ h1  (<- base)                          └─ h1  (<- base)
  *            └─ span                             └─ span
  *                                                └─ div
- *
- * *******************************************************
  *
  *  Title
  *    └─ TitleName [ForwardRef]
