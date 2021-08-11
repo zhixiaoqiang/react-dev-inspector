@@ -4,6 +4,7 @@
 
 import {
   Rect,
+  BoxSizing,
   getElementDimensions,
   getNestedBoundingClientRect,
 } from './utils/overlay'
@@ -56,7 +57,7 @@ class OverlayRect {
     }
   }
 
-  update(box: Rect, dims: any) {
+  update(box: Rect, dims: BoxSizing) {
     boxWrap(dims, 'margin', this.node)
     boxWrap(dims, 'border', this.border)
     boxWrap(dims, 'padding', this.padding)
@@ -308,7 +309,7 @@ export default class Overlay {
   }
 }
 
-function findTipPos(dims, bounds, tipSize) {
+function findTipPos(dims: Box, bounds: Box, tipSize: { width: number; height: number }) {
   const tipHeight = Math.max(tipSize.height, 20)
   const tipWidth = Math.max(tipSize.width, 60)
   const margin = 5
@@ -338,14 +339,15 @@ function findTipPos(dims, bounds, tipSize) {
     left = bounds.left + bounds.width - tipWidth - margin
   }
 
-  top += 'px'
-  left += 'px'
   return {
-    style: { top, left },
+    style: {
+      top: `${top}px`,
+      left: `${left}px`,
+    },
   }
 }
 
-function boxWrap(dims, what, node) {
+function boxWrap(dims: BoxSizing, what: 'margin' | 'padding' | 'border', node: HTMLElement) {
   Object.assign(node.style, {
     borderTopWidth: `${dims[`${what}Top`]}px`,
     borderLeftWidth: `${dims[`${what}Left`]}px`,

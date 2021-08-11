@@ -22,8 +22,10 @@
     "resolveJsonModule": true,
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
-    "strictNullChecks": true,
-    "noImplicitAny": true,
+    // https://www.typescriptlang.org/tsconfig#strict
+    "strict": true,
+    "noImplicitAny": false,
+    "strictFunctionTypes": false,
     "noUnusedLocals": true,
     "skipLibCheck": true,
     "sourceMap": false,
@@ -48,7 +50,6 @@
     "useDefineForClassFields": true,
     // https://www.typescriptlang.org/tsconfig#downlevelIteration
     "downlevelIteration": true,
-    "strict": true,
     "forceConsistentCasingInFileNames": true,
   },
   "exclude": [

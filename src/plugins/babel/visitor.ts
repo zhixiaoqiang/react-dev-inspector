@@ -71,13 +71,13 @@ const doJSXNamespacedNameName: NodeHandler<JSXNamespacedName> = (name) => {
 type ElementTypes = JSXOpeningElement['name']['type']
 
 const doJSXPathName: NodeHandler<JSXOpeningElement['name']> = (name) => {
-  const dealMap: { [key in ElementTypes]: NodeHandler } = {
+  const visitors: { [key in ElementTypes]: NodeHandler } = {
     JSXIdentifier: doJSXIdentifierName,
     JSXMemberExpression: doJSXMemberExpressionName,
     JSXNamespacedName: doJSXNamespacedNameName,
   }
 
-  return dealMap[name.type](name)
+  return visitors[name.type](name)
 }
 
 
@@ -136,7 +136,7 @@ const memo = (handler): typeof handler => {
 export const createVisitor = ({ cwd, excludes }: {
   cwd?: string,
   excludes?: (string | RegExp)[],
-}): Visitor => {
+}): Visitor<PluginPass> => {
   const isExclude = excludes?.length
     ? memo((filePath: string): boolean => pathMatch(filePath, excludes))
     : () => false
@@ -146,7 +146,7 @@ export const createVisitor = ({ cwd, excludes }: {
     filePath,
   ))
 
-  const visitor: Visitor = {
+  const visitor: Visitor<PluginPass> = {
     JSXOpeningElement: {
       enter(path, state: PluginPass) {
         const filePath = state?.file?.opts?.filename

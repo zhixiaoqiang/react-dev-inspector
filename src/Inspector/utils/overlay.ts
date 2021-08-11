@@ -15,6 +15,20 @@ export interface Rect {
   width: number,
 }
 
+export interface BoxSizing {
+  borderTop: number,
+  borderBottom: number,
+  borderLeft: number,
+  borderRight: number,
+  paddingTop: number,
+  paddingBottom: number,
+  paddingLeft: number,
+  paddingRight: number,
+  marginTop: number,
+  marginBottom: number,
+  marginLeft: number,
+  marginRight: number,
+}
 
 // Calculate a boundingClientRect for a node relative to boundaryWindow,
 // taking into account any offsets caused by intermediate iframes.

@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef, ReactElement } from 'react'
 import type { Fiber } from 'react-reconciler'
-import hotkeys from 'hotkeys-js'
+import hotkeys, { KeyHandler } from 'hotkeys-js'
 import { setupHighlighter } from './utils/hightlight'
 import {
   getElementCodeInfo,
@@ -118,7 +118,7 @@ export const Inspector: React.FC<InspectorProps> = (props) => {
   )
 
   useEffect(() => {
-    const handleHotKeys = (event, handler) => {
+    const handleHotKeys: KeyHandler = (event, handler) => {
       if (handler.key === hotkey) {
         handleInspectKey()
       } else if (isInspect && handler.key === 'esc') {
