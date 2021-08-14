@@ -2,14 +2,12 @@
   "extends": "./tsconfig.json",
   "include": [
     "src/global.d.ts",
-    "src/Inspector"
+    "src/Inspector",
   ],
   "compilerOptions": {
     "outDir": "es",
     "module": "esnext",
     "target": "es2015",
     "noEmit": false,
-    "declaration": true,
-    "skipLibCheck": true
   }
 }

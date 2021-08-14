@@ -15,7 +15,7 @@ const config: Config.InitialOptions = {
   ],
   collectCoverage: true,
   collectCoverageFrom: [
-    'src/**/*.{ts,tsx}',
+    'src/plugins/**/*.{ts,tsx}',
   ],
 
   globals: {

@@ -1,7 +1,8 @@
 {
-  "extends": "./es-build.json",
-  "include": ["src/plugins"],
-  "exclude": [],
+  "extends": "./build.esm.json",
+  "include": [
+    "src/plugins",
+  ],
   "compilerOptions": {
     "outDir": "plugins",
     "module": "commonjs"
