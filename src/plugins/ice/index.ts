@@ -1,5 +1,5 @@
 import * as path from 'path'
-import { launchEditorMiddleware } from '../webpack/launchEditorMiddleware'
+import { launchEditorMiddleware } from '../webpack/middlewares'
 
 const plugin = ({ onGetWebpackConfig }) => {
   if (process.env.NODE_ENV === 'production') {

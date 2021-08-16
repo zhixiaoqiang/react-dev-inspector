@@ -197,7 +197,7 @@ export const gotoEditor = (source?: CodeInfo) => {
   }
 
   /**
-   * api in 'react-dev-inspector/plugins/webpack/launchEditorMiddleware'
+   * api in 'react-dev-inspector/plugins/webpack/middlewares' launchEditorMiddleware
    */
   const apiRoute = isRelative
     ? `${launchEditorEndpoint}/relative`

@@ -5,7 +5,7 @@
 import type { IApi } from '@umijs/types'
 import {
   createLaunchEditorMiddleware,
-} from '../webpack/launchEditorMiddleware'
+} from '../webpack/middlewares'
 import type { InspectorPluginOptions } from '../babel'
 
 export default function inspectorPlugin(api: IApi) {

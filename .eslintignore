@@ -19,3 +19,6 @@ react-app-env.d.ts
 !.umirc.*
 
 /tests/fixtures
+
+*.d.ts
+!.babelrc.js

@@ -89,12 +89,14 @@ There are some example ways to set up, please pick the one fit your project best
 
 In common cases, if you're using webpack, you can see [#raw-webpack-config](https://github.com/zthxxx/react-dev-inspector#raw-webpack-config),
 
-If your project happen to use create-react-app / vite2 / umi3 / umi2, you can also try out our **integrated plugins / examples** with
+If your project happen to use vite / nextjs / create-react-app and so on, you can also try out our **integrated plugins / examples** with
 
-- [#usage-with-create-react-app](https://github.com/zthxxx/react-dev-inspector#usage-with-create-react-app)
 - [#usage-with-vite2](https://github.com/zthxxx/react-dev-inspector#usage-with-vite2)
+- [#usage-with-next.js](https://github.com/zthxxx/react-dev-inspector#usage-with-nextjs)
+- [#usage-with-create-react-app](https://github.com/zthxxx/react-dev-inspector#usage-with-create-react-app)
 - [#usage-with-umi3](https://github.com/zthxxx/react-dev-inspector#usage-with-umi3)
 - [#usage-with-umi2](https://github.com/zthxxx/react-dev-inspector#usage-with-umi2) 
+- [#usage-with-ice.js](https://github.com/zthxxx/react-dev-inspector#usage-with-icejs) 
 
 
 
@@ -103,11 +105,13 @@ If your project happen to use create-react-app / vite2 / umi3 / umi2, you can al
 Example:
 
 ```js
-// babelrc.js
-export default {
+// .babelrc.js
+module.exports = {
   plugins: [
-    // plugin options docs see:
-    // https://github.com/zthxxx/react-dev-inspector#inspector-babel-plugin-options
+    /**
+     * react-dev-inspector plugin, options docs see:
+     * https://github.com/zthxxx/react-dev-inspector#inspector-babel-plugin-options
+     */
     'react-dev-inspector/plugins/babel',
   ],
 }
@@ -134,7 +138,9 @@ const config: Configuration = {
 
 #### usage with [Vite2](https://vitejs.dev)
 
-Example `vite.config.ts`:
+> example project see: https://github.com/zthxxx/react-dev-inspector/tree/master/sites/vite2
+
+example `vite.config.ts`:
 
 ```ts
 import { defineConfig } from 'vite'
@@ -149,9 +155,85 @@ export default defineConfig({
 
 <br />
 
+#### usage with [Next.js](https://nextjs.org/)
+
+use Next.js [Custom Server](https://nextjs.org/docs/advanced-features/custom-server) + [Customizing Babel Config](https://nextjs.org/docs/advanced-features/customizing-babel-config)
+
+> example project see: https://github.com/zthxxx/react-dev-inspector/tree/master/sites/nextjs
+
+in `server.js`, example:
+
+```js
+...
+
+const {
+  queryParserMiddleware,
+  launchEditorMiddleware,
+} = require('react-dev-inspector/plugins/webpack')
+
+app.prepare().then(() => {
+  createServer((req, res) => {
+    /**
+     * middlewares, from top to bottom
+     */
+    const middlewares = [
+      /**
+       * react-dev-inspector configuration two middlewares for nextjs
+       */
+      queryParserMiddleware,
+      launchEditorMiddleware,
+
+      /** Next.js default app handle */
+        (req, res) => handle(req, res),
+    ]
+
+    const middlewarePipeline = middlewares.reduceRight(
+      (next, middleware) => (
+        () => { middleware(req, res, next) }
+      ),
+      () => {},
+    )
+
+    middlewarePipeline()
+
+  }).listen(PORT, (err) => {
+    if (err) throw err
+    console.debug(`> Ready on http://localhost:${PORT}`)
+  })
+})
+```
+
+in `package.json`, example:
+
+```diff
+  "scripts": {
+-    "dev": "next dev",
++    "dev": "node server.js",
+    "build": "next build"
+  }
+```
+
+in `.babelrc.js`, example:
+
+```js
+module.exports = {
+  plugins: [
+    /**
+     * react-dev-inspector plugin, options docs see:
+     * https://github.com/zthxxx/react-dev-inspector#inspector-babel-plugin-options
+     */
+    'react-dev-inspector/plugins/babel',
+  ],
+}
+```
+
+<br />
+
 #### usage with create-react-app
 
 cra + [react-app-rewired](https://github.com/timarney/react-app-rewired) + [customize-cra](https://github.com/arackaf/customize-cra) example `config-overrides.js`:
+
+> example project see: https://github.com/zthxxx/react-dev-inspector/tree/master/sites/cra
 
 ```ts
 const { ReactInspectorPlugin } = require('react-dev-inspector/plugins/webpack')
@@ -180,6 +262,8 @@ module.exports = override(
 <br />
 
 #### usage with [Umi3](https://umijs.org/)
+
+> example project see: https://github.com/zthxxx/react-dev-inspector/tree/master/sites/umi3
 
 Example `.umirc.dev.ts`:
 
@@ -254,14 +338,17 @@ Example `build.json`:
 
 <br />
 
-### Example Project Code
+### Examples Project Code
 
-- **create-react-app**
-  - code: https://github.com/zthxxx/react-dev-inspector/tree/master/sites/cra
-  - preview: https://react-dev-inspector.zthxxx.me/cra
 - **vite2**
   - code: https://github.com/zthxxx/react-dev-inspector/tree/master/sites/vite2
   - preview: https://react-dev-inspector.zthxxx.me/vite2
+- **next.js**
+  - code: https://github.com/zthxxx/react-dev-inspector/tree/master/sites/nextjs
+  - preview: https://react-dev-inspector.zthxxx.me/nextjs
+- **create-react-app**
+  - code: https://github.com/zthxxx/react-dev-inspector/tree/master/sites/cra
+  - preview: https://react-dev-inspector.zthxxx.me/cra
 - **umi3**
   - code: https://github.com/zthxxx/react-dev-inspector/tree/master/sites/umi3
   - preview: https://react-dev-inspector.zthxxx.me/umi3

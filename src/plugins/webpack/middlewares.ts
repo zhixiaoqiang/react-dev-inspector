@@ -1,9 +1,19 @@
 import path from 'path'
+import type { NextHandleFunction, IncomingMessage } from 'connect'
 import type { RequestHandler } from 'express'
 import createReactLaunchEditorMiddleware from 'react-dev-utils/errorOverlayMiddleware'
 import launchEditorEndpoint from 'react-dev-utils/launchEditorEndpoint'
 
 const reactLaunchEditorMiddleware: RequestHandler = createReactLaunchEditorMiddleware()
+
+
+export const queryParserMiddleware: NextHandleFunction = (req: IncomingMessage & { query?: Object }, res, next) => {
+  if (!req.query && req.url) {
+    const url = new URL(req.url, 'https://placeholder.domain')
+    req.query = Object.fromEntries(url.searchParams.entries())
+  }
+  next()
+}
 
 
 export const launchEditorMiddleware: RequestHandler = (req, res, next) => {

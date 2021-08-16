@@ -1,5 +1,5 @@
 import type { Compiler } from 'webpack'
-import { launchEditorMiddleware } from './launchEditorMiddleware'
+import { launchEditorMiddleware } from './middlewares'
 
 
 /**

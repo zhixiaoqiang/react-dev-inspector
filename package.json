@@ -4,7 +4,6 @@
   "sideEffects": false,
   "description": "dev-tool for inspect react components and jump to local IDE for component code.",
   "workspaces": [
-    ".",
     "./sites/*"
   ],
   "main": "lib/index.js",
@@ -12,14 +11,14 @@
   "types": "es/index.d.ts",
   "scripts": {
     "test": "jest tests",
-    "clean": "rimraf build dist site es lib plugins",
+    "clean": "rimraf coverage dist site es lib plugins",
     "dev": "nodemon -w src -e ts,tsx -x scripts/dev.sh",
     "site": "scripts/dev-site.sh",
     "build": "scripts/build-package.sh",
     "build:site": "scripts/build-sites.sh",
     "vercel-build": "scripts/vercel-build.sh",
     "tag": "git tag v$(node -e 'console.log(require(\"./package.json\").version)')",
-    "lint": "TIMING=1 eslint --ext js,jsx,ts,tsx src sites"
+    "lint": "TIMING=1 eslint --quiet --ext js,jsx,ts,tsx src sites"
   },
   "repository": "zthxxx/react-dev-inspector",
   "publishConfig": {
@@ -110,7 +109,7 @@
     }
   },
   "lint-staged": {
-    "*.{js,jsx,ts,tsx}": "eslint --ext js,jsx,ts,tsx"
+    "*.{js,jsx,ts,tsx}": "eslint --quiet --ext js,jsx,ts,tsx"
   },
   "renovate": {
     "enabled": false
