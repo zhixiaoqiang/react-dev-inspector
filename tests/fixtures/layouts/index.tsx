@@ -16,7 +16,7 @@ export const HomePage = () => {
       relativePath,
       lineNumber
     } = inspect.codeInfo;
-    window.open(`${projectRepo}/blob/master/sites/umi3/${relativePath}#L${lineNumber}`);
+    window.open(`${projectRepo}/blob/master/examples/umi3/${relativePath}#L${lineNumber}`);
   }}>
       <Global data-inspector-line="32" data-inspector-column="6" data-inspector-relative-path="layouts/index.tsx" styles={S.globalCss} />
 

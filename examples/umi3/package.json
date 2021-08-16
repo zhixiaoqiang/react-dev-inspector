@@ -1,5 +1,5 @@
 {
-  "name": "@demo-sites/umi3",
+  "name": "@example/umi3",
   "version": "0.0.0",
   "description": "website demo for react-dev-inspector using umi3",
   "scripts": {
@@ -8,7 +8,7 @@
     "build": "NODE_ENV=production npm-run-all clean build:*",
     "build:umi": "COMPRESS=none SPEED_MEASURE=CONSOLE umi build"
   },
-  "repository": "zthxxx/react-dev-inspector/sites/umi3",
+  "repository": "zthxxx/react-dev-inspector/examples/umi3",
   "private": true,
   "author": "zthxxx",
   "homepage": "https://react-dev-inspector.zthxxx.me/umi3",

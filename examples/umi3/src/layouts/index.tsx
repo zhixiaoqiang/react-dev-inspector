@@ -25,7 +25,7 @@ export const HomePage = () => {
         } = inspect.codeInfo
 
         window.open(
-          `${projectRepo}/blob/master/sites/umi3/${relativePath}#L${lineNumber}`,
+          `${projectRepo}/blob/master/examples/umi3/${relativePath}#L${lineNumber}`,
         )
       }}
     >

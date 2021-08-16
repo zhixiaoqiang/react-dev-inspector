@@ -5,7 +5,7 @@ import type webpack from 'webpack'
 import inspectorLoader from '../src/plugins/webpack/inspector-loader'
 
 // working directory is project root dir
-const assetsBaseDir = './sites/umi3/src'
+const assetsBaseDir = './examples/umi3/src'
 const fixturesBaseDir = './tests/fixtures'
 
 const assets = globby

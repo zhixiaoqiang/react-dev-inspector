@@ -6,4 +6,4 @@
 #   scripts/dev-site.sh cra
 site="${1:-umi3}"
 
-npm run dev -w "sites/${site}"
+npm run dev -w "examples/${site}"

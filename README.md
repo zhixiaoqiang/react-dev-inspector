@@ -138,7 +138,7 @@ const config: Configuration = {
 
 #### usage with [Vite2](https://vitejs.dev)
 
-> example project see: https://github.com/zthxxx/react-dev-inspector/tree/master/sites/vite2
+> example project see: https://github.com/zthxxx/react-dev-inspector/tree/master/examples/vite2
 
 example `vite.config.ts`:
 
@@ -159,7 +159,7 @@ export default defineConfig({
 
 use Next.js [Custom Server](https://nextjs.org/docs/advanced-features/custom-server) + [Customizing Babel Config](https://nextjs.org/docs/advanced-features/customizing-babel-config)
 
-> example project see: https://github.com/zthxxx/react-dev-inspector/tree/master/sites/nextjs
+> example project see: https://github.com/zthxxx/react-dev-inspector/tree/master/examples/nextjs
 
 in `server.js`, example:
 
@@ -233,7 +233,7 @@ module.exports = {
 
 cra + [react-app-rewired](https://github.com/timarney/react-app-rewired) + [customize-cra](https://github.com/arackaf/customize-cra) example `config-overrides.js`:
 
-> example project see: https://github.com/zthxxx/react-dev-inspector/tree/master/sites/cra
+> example project see: https://github.com/zthxxx/react-dev-inspector/tree/master/examples/cra
 
 ```ts
 const { ReactInspectorPlugin } = require('react-dev-inspector/plugins/webpack')
@@ -263,7 +263,7 @@ module.exports = override(
 
 #### usage with [Umi3](https://umijs.org/)
 
-> example project see: https://github.com/zthxxx/react-dev-inspector/tree/master/sites/umi3
+> example project see: https://github.com/zthxxx/react-dev-inspector/tree/master/examples/umi3
 
 Example `.umirc.dev.ts`:
 
@@ -341,16 +341,16 @@ Example `build.json`:
 ### Examples Project Code
 
 - **vite2**
-  - code: https://github.com/zthxxx/react-dev-inspector/tree/master/sites/vite2
+  - code: https://github.com/zthxxx/react-dev-inspector/tree/master/examples/vite2
   - preview: https://react-dev-inspector.zthxxx.me/vite2
 - **next.js**
-  - code: https://github.com/zthxxx/react-dev-inspector/tree/master/sites/nextjs
+  - code: https://github.com/zthxxx/react-dev-inspector/tree/master/examples/nextjs
   - preview: https://react-dev-inspector.zthxxx.me/nextjs
 - **create-react-app**
-  - code: https://github.com/zthxxx/react-dev-inspector/tree/master/sites/cra
+  - code: https://github.com/zthxxx/react-dev-inspector/tree/master/examples/cra
   - preview: https://react-dev-inspector.zthxxx.me/cra
 - **umi3**
-  - code: https://github.com/zthxxx/react-dev-inspector/tree/master/sites/umi3
+  - code: https://github.com/zthxxx/react-dev-inspector/tree/master/examples/umi3
   - preview: https://react-dev-inspector.zthxxx.me/umi3
 
 <br />

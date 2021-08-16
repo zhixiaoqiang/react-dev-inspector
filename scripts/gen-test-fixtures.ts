@@ -2,10 +2,18 @@ import path from 'path'
 import globby from 'globby'
 import fs from 'fs-extra'
 import type webpack from 'webpack'
-import inspectorLoader from './plugins/webpack/inspector-loader'
+import inspectorLoader from '../src/plugins/webpack/inspector-loader'
 
-// working directory is project root dir
-const assetsBaseDir = './sites/umi3/src'
+
+/**
+ * usage:
+ *   $ ts-node scripts/gen-test-fixtures.ts
+ *
+ * (working directory is project root dir)
+ */
+
+
+const assetsBaseDir = './examples/umi3/src'
 const fixturesBaseDir = './tests/fixtures'
 
 const assets = globby

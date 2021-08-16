@@ -7,7 +7,7 @@ import { InspectorBabelPlugin } from '../src/plugins/babel'
 import type { InspectorPluginOptions } from '../src/plugins/babel'
 
 // working directory is project root dir
-const assetsBaseDir = './sites/umi3/src'
+const assetsBaseDir = './examples/umi3/src'
 const fixturesBaseDir = './tests/fixtures'
 
 const cwd = process.cwd()
@@ -31,7 +31,7 @@ pluginTester({
   plugin: InspectorBabelPlugin,
   pluginName: 'InspectorBabelPlugin',
   pluginOptions: <InspectorPluginOptions>{
-    cwd: `${cwd}/sites/umi3/src`,
+    cwd: `${cwd}/examples/umi3/src`,
   },
 
   babelOptions,

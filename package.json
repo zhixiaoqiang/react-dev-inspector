@@ -4,7 +4,7 @@
   "sideEffects": false,
   "description": "dev-tool for inspect react components and jump to local IDE for component code.",
   "workspaces": [
-    "./sites/*"
+    "examples/*"
   ],
   "main": "lib/index.js",
   "module": "es/index.js",
@@ -15,10 +15,9 @@
     "dev": "nodemon -w src -e ts,tsx -x scripts/dev.sh",
     "site": "scripts/dev-site.sh",
     "build": "scripts/build-package.sh",
-    "build:site": "scripts/build-sites.sh",
-    "vercel-build": "scripts/vercel-build.sh",
+    "build:site": "scripts/build-site.sh",
     "tag": "git tag v$(node -e 'console.log(require(\"./package.json\").version)')",
-    "lint": "TIMING=1 eslint --quiet --ext js,jsx,ts,tsx src sites"
+    "lint": "TIMING=1 eslint --quiet --ext js,jsx,ts,tsx src examples"
   },
   "repository": "zthxxx/react-dev-inspector",
   "publishConfig": {

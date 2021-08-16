@@ -15,10 +15,10 @@ npm run --ws build
 rm -rf site
 mkdir -p site
 
-# move sites as routes
-for site_dir in $(ls -d sites/*); do
+# move examples as site routes
+for site_dir in $(ls -d examples/*); do
   site=$(basename ${site_dir})
-  cp -fR sites/${site}/dist site/${site}
+  cp -fR examples/${site}/dist site/${site}
 done
 
 # create index page

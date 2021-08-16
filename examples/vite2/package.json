@@ -1,5 +1,5 @@
 {
-  "name": "@demo-sites/vite2",
+  "name": "@example/vite2",
   "version": "0.0.0",
   "description": "website demo for react-dev-inspector using vite2",
   "scripts": {
@@ -8,7 +8,7 @@
     "build": "npm run clean && vite build --base=/vite2/",
     "serve": "vite preview"
   },
-  "repository": "zthxxx/react-dev-inspector/sites/vite2",
+  "repository": "zthxxx/react-dev-inspector/examples/vite2",
   "private": true,
   "author": "zthxxx",
   "homepage": "https://react-dev-inspector.zthxxx.me/vite2",
