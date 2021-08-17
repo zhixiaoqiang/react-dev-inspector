@@ -1,8 +1,29 @@
 # Changelog
 
 
-## [1.6.0](https://github.com/zthxxx/react-dev-inspector/compare/v1.5.3...v1.6.0) (2021-04-27)
+## [1.7.0](https://github.com/zthxxx/react-dev-inspector/compare/v1.6.0...v1.7.0) (2021-08-16)
 
+### feat
+
+* support for Next.js, add example project and docs ([c7f52ba](https://github.com/zthxxx/react-dev-inspector/commit/c7f52bac8e6ec8cd7f56f12d1035090bb7ced3e5)), close [#98](https://github.com/zthxxx/react-dev-inspector/issues/98)
+
+### chore
+
+* upgrade many dependencies version by renovate bot
+* enhance ts types for tsc build ([b8b8375](https://github.com/zthxxx/react-dev-inspector/commit/b8b837545373e35c075e7b2d804f9614eef9f24f))
+* refactor build scripts, add commonjs output for ssr like Next.js ([e2d4d8d](https://github.com/zthxxx/react-dev-inspector/commit/e2d4d8d7a06c8d03fbfc3b355dfefd79d02c17e0))
+* rename sites to examples ([407ff76](https://github.com/zthxxx/react-dev-inspector/commit/407ff764118c183b001f0f44ac20fbf5b2b21c0f))
+* update config of jest / npm / ts ([a40f9b8](https://github.com/zthxxx/react-dev-inspector/commit/a40f9b812c6b8c8ab348709f490286c34b701895))
+* upgrade lockFileVersion to v2 ([a45873b](https://github.com/zthxxx/react-dev-inspector/commit/a45873b8289ee2964b794400e2e06d5aecd5471d))
+
+### docs
+
+* add docs for changelog ([fe1206b](https://github.com/zthxxx/react-dev-inspector/commit/fe1206b608d1b789315c71ed53f915077868d9f9)), close [#25](https://github.com/zthxxx/react-dev-inspector/issues/25)
+* update comments of inspect reference fiber rule ([fb74698](https://github.com/zthxxx/react-dev-inspector/commit/fb74698eaa41a6c6dab84d4ec448b0b7e1f79028))
+
+
+
+## [1.6.0](https://github.com/zthxxx/react-dev-inspector/compare/v1.5.3...v1.6.0) (2021-04-27)
 
 ### Features
 
@@ -11,7 +32,6 @@
 
 
 ## [1.5.3](https://github.com/zthxxx/react-dev-inspector/compare/v1.5.2...v1.5.3) (2021-03-23)
-
 
 ### Bug Fixes
 
@@ -27,7 +47,6 @@
 
 ## [1.5.1](https://github.com/zthxxx/react-dev-inspector/compare/v1.5.0...v1.5.1) (2021-03-13)
 
-
 ### Bug Fixes
 
 * fix querystring dependency, close [#26](https://github.com/zthxxx/react-dev-inspector/issues/26) ([46d94c0](https://github.com/zthxxx/react-dev-inspector/commit/46d94c06b7ce03e37635de1652733e00baf610ca))
@@ -42,7 +61,6 @@
 
 ## [1.4.0](https://github.com/zthxxx/react-dev-inspector/compare/v1.3.6...v1.4.0) (2020-03-06)
 
-
 ### Features
 
 * add inspector babel-plugin, add tests, adjust api docs ([7c4c9c9](https://github.com/zthxxx/react-dev-inspector/commit/7c4c9c957335762918855cc97037b937a1390deb))
@@ -51,7 +69,6 @@
 
 ## [1.3.6](https://github.com/zthxxx/react-dev-inspector/compare/v1.3.1...v1.3.6) (2020-03-07)
 
-
 ### Refactor
 
 * optimize inspect interactive experience ([7aca0c28](https://github.com/zthxxx/react-dev-inspector/commit/7aca0c2829163987f5a51ffa32603d793db5c447))  relate to ([#20](https://github.com/zthxxx/react-dev-inspector/issues/20))
@@ -59,7 +76,6 @@
 
 
 ## [1.3.1](https://github.com/zthxxx/react-dev-inspector/compare/v1.1.4...v1.3.1) (2021-03-05)
-
 
 ### Bug Fixes
 
@@ -70,15 +86,13 @@
 
 ### Features
 
-* do not need to config or use pwd in react runtime, v1.3.0 ([e85a030](https://github.com/zthxxx/react-dev-inspector/commit/e85a030efe008a379c75852b09674dbcb2497969)), closes [#21](https://github.com/zthxxx/react-dev-inspector/issues/21)
-
+* do not need to config or use pwd in react runtime, v1.3.0 ([e85a030](https://github.com/zthxxx/react-dev-inspector/commit/e85a030efe008a379c75852b09674dbcb2497969)), close [#21](https://github.com/zthxxx/react-dev-inspector/issues/21)
 * add create-react-app example project, adjust umi example code ([e8ccaeb](https://github.com/zthxxx/react-dev-inspector/commit/e8ccaeb97bbbd511cb8e9579966108abcde90e41))
 * add feature of jumping to the place of reference more humanized ([#15](https://github.com/zthxxx/react-dev-inspector/issues/15)) ([#20](https://github.com/zthxxx/react-dev-inspector/issues/20)) ([16d9aca](https://github.com/zthxxx/react-dev-inspector/commit/16d9aca41d367a285ae2192fe48c42e4c0ded635))
 
 
 
 ## [1.1.4](https://github.com/zthxxx/react-dev-inspector/compare/v1.1.3...v1.1.4) (2020-12-15)
-
 
 ### Bug Fixes
 
@@ -93,7 +107,6 @@
 ## [1.1.1](https://github.com/zthxxx/react-dev-inspector/compare/v1.0.0...v1.1.1) (2020-12-07)
 
 First public release version, initialized project.
-
 
 ### Features
 
