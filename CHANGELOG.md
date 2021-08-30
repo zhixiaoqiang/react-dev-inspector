@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.7.1](https://github.com/zthxxx/react-dev-inspector/compare/v1.7.0...v1.7.1) (2021-11-02)
+
+
+### feat
+
+* inspect element immediately at mouse point while press hotkey ([06b57fb](https://github.com/zthxxx/react-dev-inspector/commit/06b57fb29bf5fa872c3a958e32d799b734bb0fc0))
+
+
 
 ## [1.7.0](https://github.com/zthxxx/react-dev-inspector/compare/v1.6.0...v1.7.0) (2021-08-16)
 
