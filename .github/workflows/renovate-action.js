@@ -13,7 +13,7 @@ process.env.FORCE_COLOR = 'true'
 
 module.exports = {
   repositories: [
-    'zthxxx/react-dev-inspector',
+    'zhixiaoqiang/react-dev-inspector',
   ],
   force: {
     enabled: true
