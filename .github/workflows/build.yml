@@ -28,29 +28,8 @@ jobs:
           # Number of commits to fetch. 0 indicates all history.
           fetch-depth: 1
 
-      - name: Setup node
-        # https://github.com/actions/setup-node
-        uses: actions/setup-node@v2
-        with:
-          node-version: 14.x
-          registry-url: https://registry.npmjs.org
-
-      - name: Environment variables
-        run: |
-          env
-
-      - name: Install
-        run: |
-          npm i -g npm@7
-          npm ci
-
-      - name: ESLint
-        run: |
-          npm run lint
-
-      - name: Unit test
-        run: |
-          npm test
+      - name: Prepare for building
+        uses: ./.github/actions/prepare
 
       - name: Build package
         run: |
