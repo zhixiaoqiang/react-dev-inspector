@@ -185,7 +185,7 @@ $({ target: 'Math', stat: true, forced: true }, {
 /*! all exports used */
 /*! ModuleConcatenation bailout: Cannot concat with /home/runner/work/react-dev-inspector/react-dev-inspector/node_modules/hoist-non-react-statics/dist/hoist-non-react-statics.cjs.js (<- Module is not an ECMAScript module) */
 /*! ModuleConcatenation bailout: Cannot concat with /home/runner/work/react-dev-inspector/react-dev-inspector/node_modules/querystring-es3/index.js (<- Module is not an ECMAScript module) */
-/*! ModuleConcatenation bailout: Cannot concat with /home/runner/work/react-dev-inspector/react-dev-inspector/node_modules/react-dev-utils/launchEditorEndpoint.js (<- Module is not an ECMAScript module) */
+/*! ModuleConcatenation bailout: Cannot concat with /home/runner/work/react-dev-inspector/react-dev-inspector/node_modules/react-dev-inspector/node_modules/react-dev-utils/launchEditorEndpoint.js (<- Module is not an ECMAScript module) */
 /*! ModuleConcatenation bailout: Cannot concat with /home/runner/work/react-dev-inspector/react-dev-inspector/node_modules/react-github-corner/lib/GithubCorner.js (<- Module is not an ECMAScript module) */
 /*! ModuleConcatenation bailout: Cannot concat with /home/runner/work/react-dev-inspector/react-dev-inspector/node_modules/react/index.js (<- Module is not an ECMAScript module) */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
@@ -1710,7 +1710,7 @@ var emotion_serialize_browser_esm_serializeStyles = function serializeStyles(arg
 };
 
 
-// CONCATENATED MODULE: /home/runner/work/react-dev-inspector/react-dev-inspector/node_modules/@emotion/react/dist/emotion-element-a8309070.browser.esm.js
+// CONCATENATED MODULE: /home/runner/work/react-dev-inspector/react-dev-inspector/node_modules/@emotion/react/dist/emotion-element-99289b21.browser.esm.js
 
 
 
@@ -1718,7 +1718,7 @@ var emotion_serialize_browser_esm_serializeStyles = function serializeStyles(arg
 
 
 
-var emotion_element_a8309070_browser_esm_hasOwnProperty = Object.prototype.hasOwnProperty;
+var emotion_element_99289b21_browser_esm_hasOwnProperty = Object.prototype.hasOwnProperty;
 var EmotionCacheContext = /* #__PURE__ */Object(react["createContext"])( // we're doing this to avoid preconstruct's dead code elimination in this one case
 // because this module is primarily intended for the browser and node
 // but it's also required in react native and similar environments sometimes
@@ -1728,9 +1728,16 @@ var EmotionCacheContext = /* #__PURE__ */Object(react["createContext"])( // we'r
 typeof HTMLElement !== 'undefined' ? /* #__PURE__ */emotion_cache_browser_esm({
   key: 'css'
 }) : null);
+
+if (false) {}
+
 var CacheProvider = EmotionCacheContext.Provider;
 
-var emotion_element_a8309070_browser_esm_withEmotionCache = function withEmotionCache(func) {
+var __unsafe_useEmotionCache = function useEmotionCache() {
+  return Object(react["useContext"])(EmotionCacheContext);
+};
+
+var emotion_element_99289b21_browser_esm_withEmotionCache = function withEmotionCache(func) {
   // $FlowFixMe
   return /*#__PURE__*/Object(react["forwardRef"])(function (props, ref) {
     // the cache will never be null in the browser
@@ -1741,11 +1748,13 @@ var emotion_element_a8309070_browser_esm_withEmotionCache = function withEmotion
 
 var ThemeContext = /* #__PURE__ */Object(react["createContext"])({});
 
-var emotion_element_a8309070_browser_esm_useTheme = function useTheme() {
+if (false) {}
+
+var emotion_element_99289b21_browser_esm_useTheme = function useTheme() {
   return Object(react["useContext"])(ThemeContext);
 };
 
-var emotion_element_a8309070_browser_esm_getTheme = function getTheme(outerTheme, theme) {
+var emotion_element_99289b21_browser_esm_getTheme = function getTheme(outerTheme, theme) {
   if (typeof theme === 'function') {
     var mergedTheme = theme(outerTheme);
 
@@ -1761,11 +1770,11 @@ var emotion_element_a8309070_browser_esm_getTheme = function getTheme(outerTheme
 
 var createCacheWithTheme = /* #__PURE__ */weak_memoize_browser_esm(function (outerTheme) {
   return weak_memoize_browser_esm(function (theme) {
-    return emotion_element_a8309070_browser_esm_getTheme(outerTheme, theme);
+    return emotion_element_99289b21_browser_esm_getTheme(outerTheme, theme);
   });
 });
 
-var emotion_element_a8309070_browser_esm_ThemeProvider = function ThemeProvider(props) {
+var emotion_element_99289b21_browser_esm_ThemeProvider = function ThemeProvider(props) {
   var theme = Object(react["useContext"])(ThemeContext);
 
   if (props.theme !== theme) {
@@ -1808,7 +1817,7 @@ var createEmotionProps = function createEmotionProps(type, props) {
   var newProps = {};
 
   for (var key in props) {
-    if (emotion_element_a8309070_browser_esm_hasOwnProperty.call(props, key)) {
+    if (emotion_element_99289b21_browser_esm_hasOwnProperty.call(props, key)) {
       newProps[key] = props[key];
     }
   }
@@ -1820,7 +1829,7 @@ var createEmotionProps = function createEmotionProps(type, props) {
   return newProps;
 };
 
-var Emotion = /* #__PURE__ */emotion_element_a8309070_browser_esm_withEmotionCache(function (props, cache, ref) {
+var Emotion = /* #__PURE__ */emotion_element_99289b21_browser_esm_withEmotionCache(function (props, cache, ref) {
   var cssProp = props.css; // so that using `css` from `emotion` and passing the result to the css prop works
   // not passing the registered cache to serializeStyles because it would
   // make certain babel optimisations not possible
@@ -1839,7 +1848,7 @@ var Emotion = /* #__PURE__ */emotion_element_a8309070_browser_esm_withEmotionCac
     className = props.className + " ";
   }
 
-  var serialized = emotion_serialize_browser_esm_serializeStyles(registeredStyles, undefined, typeof cssProp === 'function' || Array.isArray(cssProp) ? Object(react["useContext"])(ThemeContext) : undefined);
+  var serialized = emotion_serialize_browser_esm_serializeStyles(registeredStyles, undefined, Object(react["useContext"])(ThemeContext));
 
   if (false) { var labelFromStack; }
 
@@ -1848,7 +1857,7 @@ var Emotion = /* #__PURE__ */emotion_element_a8309070_browser_esm_withEmotionCac
   var newProps = {};
 
   for (var key in props) {
-    if (emotion_element_a8309070_browser_esm_hasOwnProperty.call(props, key) && key !== 'css' && key !== typePropName && ( true || false)) {
+    if (emotion_element_99289b21_browser_esm_hasOwnProperty.call(props, key) && key !== 'css' && key !== typePropName && ( true || false)) {
       newProps[key] = props[key];
     }
   }
@@ -1879,7 +1888,7 @@ var helpers_extends = __webpack_require__("u5Aq");
 
 var pkg = {
   name: "@emotion/react",
-  version: "11.4.0",
+  version: "11.4.1",
   main: "dist/emotion-react.cjs.js",
   module: "dist/emotion-react.esm.js",
   browser: {
@@ -1898,7 +1907,7 @@ var pkg = {
     "@babel/runtime": "^7.13.10",
     "@emotion/cache": "^11.4.0",
     "@emotion/serialize": "^1.0.2",
-    "@emotion/sheet": "^1.0.1",
+    "@emotion/sheet": "^1.0.2",
     "@emotion/utils": "^1.0.0",
     "@emotion/weak-memoize": "^0.2.5",
     "hoist-non-react-statics": "^3.3.1"
@@ -1941,7 +1950,7 @@ var pkg = {
 var emotion_react_browser_esm_jsx = function jsx(type, props) {
   var args = arguments;
 
-  if (props == null || !emotion_element_a8309070_browser_esm_hasOwnProperty.call(props, 'css')) {
+  if (props == null || !emotion_element_99289b21_browser_esm_hasOwnProperty.call(props, 'css')) {
     // $FlowFixMe
     return react["createElement"].apply(undefined, args);
   }
@@ -1963,11 +1972,11 @@ var warnedAboutCssPropForGlobal = false; // maintain place over rerenders.
 // initial render from browser, insertBefore context.sheet.tags[0] or if a style hasn't been inserted there yet, appendChild
 // initial client-side render from SSR, use place of hydrating tag
 
-var Global = /* #__PURE__ */emotion_element_a8309070_browser_esm_withEmotionCache(function (props, cache) {
+var Global = /* #__PURE__ */emotion_element_99289b21_browser_esm_withEmotionCache(function (props, cache) {
   if (false) {}
 
   var styles = props.styles;
-  var serialized = emotion_serialize_browser_esm_serializeStyles([styles], undefined, typeof styles === 'function' || Array.isArray(styles) ? Object(react["useContext"])(ThemeContext) : undefined); // but it is based on a constant that will never change at runtime
+  var serialized = emotion_serialize_browser_esm_serializeStyles([styles], undefined, Object(react["useContext"])(ThemeContext)); // but it is based on a constant that will never change at runtime
   // it's effectively like having two implementations and switching them out
   // so it's not actually breaking anything
 
@@ -2111,7 +2120,7 @@ function merge(registered, css, className) {
   return rawClassName + css(registeredStyles);
 }
 
-var ClassNames = /* #__PURE__ */emotion_element_a8309070_browser_esm_withEmotionCache(function (props, cache) {
+var ClassNames = /* #__PURE__ */emotion_element_99289b21_browser_esm_withEmotionCache(function (props, cache) {
   var hasRendered = false;
 
   var css = function css() {
@@ -2894,8 +2903,8 @@ function setupHighlighter(handlers) {
   startInspectingNative();
   return stopInspectingNative;
 }
-// EXTERNAL MODULE: /home/runner/work/react-dev-inspector/react-dev-inspector/node_modules/react-dev-utils/launchEditorEndpoint.js
-var launchEditorEndpoint = __webpack_require__("6C+4");
+// EXTERNAL MODULE: /home/runner/work/react-dev-inspector/react-dev-inspector/node_modules/react-dev-inspector/node_modules/react-dev-utils/launchEditorEndpoint.js
+var launchEditorEndpoint = __webpack_require__("Kbnq");
 var launchEditorEndpoint_default = /*#__PURE__*/__webpack_require__.n(launchEditorEndpoint);
 
 // EXTERNAL MODULE: /home/runner/work/react-dev-inspector/react-dev-inspector/node_modules/querystring-es3/index.js
@@ -3853,7 +3862,7 @@ var emotion_styled_base_browser_esm_createStyled = function createStyled(tag, op
     } // $FlowFixMe: we need to cast StatelessFunctionalComponent to our PrivateStyledComponent class
 
 
-    var Styled = emotion_element_a8309070_browser_esm_withEmotionCache(function (props, cache, ref) {
+    var Styled = emotion_element_99289b21_browser_esm_withEmotionCache(function (props, cache, ref) {
       var finalTag = shouldUseAs && props.as || baseTag;
       var className = '';
       var classInterpolations = [];
@@ -6589,28 +6598,6 @@ module.exports = isForced;
 
 /***/ }),
 
-/***/ "6C+4":
-/*!**********************************************************************************************************************!*\
-  !*** /home/runner/work/react-dev-inspector/react-dev-inspector/node_modules/react-dev-utils/launchEditorEndpoint.js ***!
-  \**********************************************************************************************************************/
-/*! no static exports found */
-/*! exports used: default */
-/*! ModuleConcatenation bailout: Module is not an ECMAScript module */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-/**
- * Copyright (c) 2015-present, Facebook, Inc.
- *
- * This source code is licensed under the MIT license found in the
- * LICENSE file in the root directory of this source tree.
- */
- // TODO: we might want to make this injectable to support DEV-time non-root URLs.
-
-module.exports = '/__open-stack-frame-in-editor';
-
-/***/ }),
-
 /***/ "6LKR":
 /*!************************************************************************************************************************!*\
   !*** /home/runner/work/react-dev-inspector/react-dev-inspector/node_modules/core-js/modules/es.object.from-entries.js ***!
@@ -7211,18 +7198,6 @@ var global = __webpack_require__(/*! ../internals/global */ "9JhN");
 $({ global: true }, {
   globalThis: global
 });
-
-
-/***/ }),
-
-/***/ "9Ihz":
-/*!****************************************************!*\
-  !*** ./src/.umi-production/core/pluginRegister.ts ***!
-  \****************************************************/
-/*! no static exports found */
-/*! ModuleConcatenation bailout: Module is not an ECMAScript module */
-/***/ (function(module, exports) {
-
 
 
 /***/ }),
@@ -11547,6 +11522,28 @@ function createReactContext(defaultValue, calculateChangedBits) {
 var index = react__WEBPACK_IMPORTED_MODULE_0___default.a.createContext || createReactContext;
 /* harmony default export */ __webpack_exports__["a"] = (index);
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./../../../@umijs/deps/compiled/webpack/4/global.js */ "y4hX")))
+
+/***/ }),
+
+/***/ "Kbnq":
+/*!*******************************************************************************************************************************************************!*\
+  !*** /home/runner/work/react-dev-inspector/react-dev-inspector/node_modules/react-dev-inspector/node_modules/react-dev-utils/launchEditorEndpoint.js ***!
+  \*******************************************************************************************************************************************************/
+/*! no static exports found */
+/*! exports used: default */
+/*! ModuleConcatenation bailout: Module is not an ECMAScript module */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/**
+ * Copyright (c) 2015-present, Facebook, Inc.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ */
+ // TODO: we might want to make this injectable to support DEV-time non-root URLs.
+
+module.exports = '/__open-stack-frame-in-editor';
 
 /***/ }),
 
@@ -20249,7 +20246,7 @@ defineWellKnownSymbol('dispose');
 
 /***/ "tB8F":
 /*!*************************************************!*\
-  !*** ./src/.umi-production/umi.ts + 14 modules ***!
+  !*** ./src/.umi-production/umi.ts + 15 modules ***!
   \*************************************************/
 /*! exports provided: default */
 /*! all exports used */
@@ -21582,6 +21579,7 @@ var index_esm_Plugin = /*#__PURE__*/function () {
   function Plugin(opts) {
     _classCallCheck(this, Plugin);
 
+    this.validKeys = void 0;
     this.hooks = {};
     this.validKeys = (opts === null || opts === void 0 ? void 0 : opts.validKeys) || [];
   }
@@ -21765,12 +21763,12 @@ var index_esm_Plugin = /*#__PURE__*/function () {
 // @ts-nocheck
 
 var plugin_plugin = new index_esm_Plugin({
-  validKeys: ['modifyClientRenderOpts', 'patchRoutes', 'rootContainer', 'render', 'onRouteChange']
+  validKeys: ['modifyClientRenderOpts', 'patchRoutes', 'rootContainer', 'render', 'onRouteChange', '__mfsu']
 });
 
-// EXTERNAL MODULE: ./src/.umi-production/core/pluginRegister.ts
-var pluginRegister = __webpack_require__("9Ihz");
-
+// CONCATENATED MODULE: ./src/.umi-production/core/pluginRegister.ts
+// @ts-nocheck
+var __mfsu = 1;
 // CONCATENATED MODULE: /home/runner/work/react-dev-inspector/react-dev-inspector/node_modules/@babel/runtime/helpers/esm/extends.js
 function _extends() {
   _extends = Object.assign || function (target) {
@@ -23605,7 +23603,7 @@ function renderRoutes(routes, extraProps, switchProps) {
 }
 
 
-// CONCATENATED MODULE: /home/runner/work/react-dev-inspector/react-dev-inspector/node_modules/@umijs/renderer-react/dist/index.esm.js
+// CONCATENATED MODULE: /home/runner/work/react-dev-inspector/react-dev-inspector/node_modules/@umijs/preset-built-in/node_modules/@umijs/renderer-react/dist/index.esm.js
 
 
 
@@ -23764,7 +23762,7 @@ function index_esm_arrayWithHoles(arr) {
 }
 
 function _iterableToArrayLimit(arr, i) {
-  var _i = arr && (typeof Symbol !== "undefined" && arr[Symbol.iterator] || arr["@@iterator"]);
+  var _i = arr == null ? null : typeof Symbol !== "undefined" && arr[Symbol.iterator] || arr["@@iterator"];
 
   if (_i == null) return;
   var _arr = [];
@@ -23890,10 +23888,12 @@ function index_esm_Route(props) {
   });
 }
 
+var _excluded = ["children"];
+
 function index_esm_Switch(props) {
   return /*#__PURE__*/react_default.a.createElement(react_router_context.Consumer, null, function (context) {
     var children = props.children,
-        extraProps = _objectWithoutProperties(props, ["children"]);
+        extraProps = _objectWithoutProperties(props, _excluded);
 
     var location = props.location || context.location;
     var element,
@@ -23915,9 +23915,11 @@ function index_esm_Switch(props) {
   });
 }
 
+var _excluded$1 = ["component"];
+
 function wrapInitialPropsFetch(route, opts) {
   var component = route.component,
-      restRouteParams = _objectWithoutProperties(route, ["component"]);
+      restRouteParams = _objectWithoutProperties(route, _excluded$1);
 
   var Component = route.component;
 
@@ -24112,9 +24114,11 @@ function index_esm_renderRoutes(opts) {
   })) : null;
 }
 
+var _excluded$2 = ["history"];
+
 function RouterComponent(props) {
   var history = props.history,
-      renderRoutesProps = _objectWithoutProperties(props, ["history"]);
+      renderRoutesProps = _objectWithoutProperties(props, _excluded$2);
 
   Object(react["useEffect"])(function () {
     // first time using window.g_initialProps
@@ -24351,7 +24355,7 @@ var umi_getClientRender = function getClientRender() {
 var clientRender = umi_getClientRender();
 /* harmony default export */ var umi = __webpack_exports__["default"] = (clientRender());
 window.g_umi = {
-  version: '3.5.3'
+  version: '3.5.18'
 }; // hot module replacement
 // @ts-ignore
 
