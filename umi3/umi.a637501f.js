@@ -24355,7 +24355,7 @@ var umi_getClientRender = function getClientRender() {
 var clientRender = umi_getClientRender();
 /* harmony default export */ var umi = __webpack_exports__["default"] = (clientRender());
 window.g_umi = {
-  version: '3.5.18'
+  version: '3.5.19'
 }; // hot module replacement
 // @ts-ignore
 
