@@ -9,7 +9,10 @@ declare module 'global' {
 
       __REACT_DEVTOOLS_TARGET_WINDOW__: Window,
 
-      /** toggle whether react-dev-inspector start or stop */
+      /**
+       * toggle whether react-dev-inspector start or stop
+       * @deprecated only for debug, will remove in next version
+       */
       __REACT_DEV_INSPECTOR_TOGGLE__?: () => void,
     }
   }

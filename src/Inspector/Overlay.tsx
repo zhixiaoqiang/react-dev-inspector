@@ -48,7 +48,9 @@ class OverlayRect {
     this.node.appendChild(this.border)
     this.border.appendChild(this.padding)
     this.padding.appendChild(this.content)
-    container.appendChild(this.node)
+
+    // ensure OverlayRect dom always before OverlayTip dom rather than cover OverlayTip
+    container.prepend(this.node)
   }
 
   remove() {
