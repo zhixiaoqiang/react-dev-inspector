@@ -4,7 +4,7 @@
   "description": "website demo for react-dev-inspector using create-react-app",
   "scripts": {
     "clean": "rimraf dist",
-    "dev": "HOST=localhost FAST_REFRESH=false react-app-rewired start",
+    "dev": "HOST=localhost FAST_REFRESH=false FORCE_COLOR=true react-app-rewired start | cat",
     "build": "NODE_ENV=production npm-run-all clean build:*",
     "build:cra": "PUBLIC_URL=/cra react-app-rewired build && mv build dist"
   },
@@ -33,8 +33,8 @@
     "@types/react-dom": "17.0.9",
     "customize-cra": "1.0.0",
     "npm-run-all": "4.1.5",
-    "react-app-rewired": "2.1.8",
-    "react-scripts": "4.0.3",
+    "react-app-rewired": "2.2.1",
+    "react-scripts": "5.0.1",
     "rimraf": "3.0.2",
     "typescript": "4.4.3"
   },

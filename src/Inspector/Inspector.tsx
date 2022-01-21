@@ -89,10 +89,11 @@ export const Inspector: React.FC<InspectorProps> = (props) => {
 
     const codeInfo = getElementCodeInfo(element)
     const relativePath = codeInfo?.relativePath
+    const absolutePath = codeInfo?.absolutePath
 
     const { fiber, name, title } = getElementInspect(element)
 
-    overlay?.inspect?.([element], title, relativePath)
+    overlay?.inspect?.([element], title, relativePath ?? absolutePath)
 
     onHoverElement?.({
       element,

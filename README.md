@@ -102,7 +102,7 @@ If your project happen to use vite / nextjs / create-react-app and so on, you ca
 
 #### raw webpack config
 
-Example:
+Support webpack v4 and v5, examples see:
 
 ```js
 // .babelrc.js
@@ -120,15 +120,47 @@ module.exports = {
 ```ts
 // webpack.config.ts
 import type { Configuration } from 'webpack'
+import { ReactInspectorPlugin } from 'react-dev-inspector/plugins/webpack'
+
+const config: Configuration = {
+  plugins: [
+    /**
+     * react-dev-inspector webpack plugin
+     * this plugin will create
+     *  `devServer.setupMiddlewares` config for webpack5
+     *   and `devServer.before` config for webpack4
+     */
+    new ReactInspectorPlugin(),
+  ],
+}
+```
+
+However, if you want more manully config with `webpack-dev-server`, here are some equivalent:
+
+```ts
+// webpack.config.ts
+import type { Configuration } from 'webpack'
 import { launchEditorMiddleware } from 'react-dev-inspector/plugins/webpack'
 
 const config: Configuration = {
-  /**
-   * [server side] webpack dev server side middleware for launch IDE app
-   */
   devServer: {
-    before: (app) => {
+    /**
+     * react-dev-inspector - dev server config
+     * for create-react-app@^5 + webpack-dev-server@^4.7
+     */
+    setupMiddlewares: (middlewares, devServer) => {
+      middlewares.unshift(launchEditorMiddleware)
+      return middlewares
+    },
+    
+    /**
+     * react-dev-inspector - dev server config
+     * for create-react-app@^4 + webpack-dev-server@^3
+     */
+    before: (app, server, compiler) => {
       app.use(launchEditorMiddleware)
+
+      // ... other middlewares after
     },
   },
 }
@@ -144,10 +176,17 @@ example `vite.config.ts`:
 
 ```ts
 import { defineConfig } from 'vite'
+import react from '@vitejs/plugin-react'
 import { inspectorServer } from 'react-dev-inspector/plugins/vite'
 
 export default defineConfig({
   plugins: [
+    react(),
+
+    /**
+     * react-dev-inspector configuration
+     * only need setup an inspector middleware
+     */
     inspectorServer(),
   ],
 })
@@ -178,7 +217,7 @@ app.prepare().then(() => {
      */
     const middlewares = [
       /**
-       * react-dev-inspector configuration two middlewares for nextjs
+       * react-dev-inspector configuration, two middlewares for nextjs
        */
       queryParserMiddleware,
       launchEditorMiddleware,
@@ -231,32 +270,70 @@ module.exports = {
 
 #### usage with create-react-app
 
-cra + [react-app-rewired](https://github.com/timarney/react-app-rewired) + [customize-cra](https://github.com/arackaf/customize-cra) example `config-overrides.js`:
+create-react-app + [react-app-rewired](https://github.com/timarney/react-app-rewired) + [customize-cra](https://github.com/arackaf/customize-cra) example `config-overrides.js`:
 
 > example project see: https://github.com/zthxxx/react-dev-inspector/tree/master/examples/cra
 
+Support create-react-app v4, v5, example config see:
+
 ```ts
-const { ReactInspectorPlugin } = require('react-dev-inspector/plugins/webpack')
 const {
+  launchEditorMiddleware,
+  ReactInspectorPlugin,
+} = require('react-dev-inspector/plugins/webpack')
+const {
+  override,
+  overrideDevServer,
   addBabelPlugin,
-  addWebpackPlugin,
 } = require('customize-cra')
 
-module.exports = override(
-  addBabelPlugin([
-    'react-dev-inspector/plugins/babel',
-    // plugin options docs see:
-    // https://github.com/zthxxx/react-dev-inspector#inspector-babel-plugin-options
-    {
-      excludes: [
-        /xxxx-want-to-ignore/,
-      ],
-    },
-  ]),
-  addWebpackPlugin(
-    new ReactInspectorPlugin(),
+
+/**
+ * origin config:
+ *   https://github.com/facebook/create-react-app/blob/v5.0.1/packages/react-scripts/config/webpack.config.js
+ *   https://github.com/facebook/create-react-app/blob/v5.0.1/packages/react-scripts/config/webpackDevServer.config.js
+ *
+ * customize-cra api code: https://github.com/arackaf/customize-cra
+ */
+module.exports = {
+  webpack: override(
+    /** react-dev-inspector - babel config */
+    addBabelPlugin([
+      // plugin options docs see:
+      // https://github.com/zthxxx/react-dev-inspector#inspector-babel-plugin-options
+      'react-dev-inspector/plugins/babel',
+      {
+        excludes: [
+          /xxxx-want-to-ignore/,
+        ],
+      },
+    ]),
+
+    /**
+     * react-dev-inspector - dev server config
+     * for create-react-app@^4 + webpack-dev-server@^3
+     */
+    addWebpackPlugin(
+      new ReactInspectorPlugin(),
+    ),
   ),
-)
+
+  /**
+   * react-dev-inspector - dev server config
+   * for create-react-app@^5 + webpack-dev-server@^4.7
+   */
+  devServer: overrideDevServer(
+    serverConfig => {
+      // https://webpack.js.org/configuration/dev-server/#devserversetupmiddlewares
+      serverConfig.setupMiddlewares = (middlewares) => {
+        middlewares.unshift(launchEditorMiddleware)
+        return middlewares
+      }
+
+      return serverConfig
+    },
+  ),
+}
 ```
 
 <br />

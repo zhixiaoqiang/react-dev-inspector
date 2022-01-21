@@ -1,3 +1,4 @@
+// @ts-nocheck
 import type { Compiler } from 'webpack'
 import { launchEditorMiddleware } from './middlewares'
 
@@ -13,16 +14,25 @@ import { launchEditorMiddleware } from './middlewares'
 export class ReactInspectorPlugin {
   public apply(compiler: Compiler) {
     if (!compiler.options.devServer) {
-      compiler.options.devServer = {
-        before: (app) => {
-          app.use(launchEditorMiddleware)
-        },
-      }
-      return
+      compiler.options.devServer = {}
+    }
+    const { devServer } = compiler.options
+
+    /**
+     * for webpack@^5 + webpack-dev-server@^4.7
+     */
+    const originSetup = devServer.setupMiddlewares
+    devServer.setupMiddlewares = (middlewares, devServer) => {
+      const result = originSetup ? originSetup(middlewares, devServer) : middlewares
+      result.unshift(launchEditorMiddleware)
+      return result
     }
 
-    const originBefore = compiler.options.devServer.before
-    compiler.options.devServer.before = (app, server, compiler) => {
+    /**
+     * for webpack@^4 + webpack-dev-server@^3
+     */
+    const originBefore = devServer.before
+    devServer.before = (app, server, compiler) => {
       app.use(launchEditorMiddleware)
       originBefore?.(app, server, compiler)
     }

@@ -40,14 +40,15 @@ export interface CodeDataAttribute {
 
 /**
  * react fiber property `_debugSource` created by `@babel/plugin-transform-react-jsx-source`
- *     https://github.com/babel/babel/blob/main/packages/babel-plugin-transform-react-jsx-source/src/index.js#L51
+ *     https://github.com/babel/babel/blob/v7.16.4/packages/babel-plugin-transform-react-jsx-source/src/index.js
  *
  * and injected `__source` property used by `React.createElement`, then pass to `ReactElement`
- *     https://github.com/facebook/react/blob/master/packages/react/src/ReactElement.js#L350-L374
- *     https://github.com/facebook/react/blob/master/packages/react/src/ReactElement.js#L189
+ *     https://github.com/facebook/react/blob/v18.0.0/packages/react/src/ReactElement.js#L189
+ *     https://github.com/facebook/react/blob/v18.0.0/packages/react/src/ReactElement.js#L389
+ *     https://github.com/facebook/react/blob/v18.0.0/packages/react/src/ReactElement.js#L447
  *
  * finally, used by `createFiberFromElement` to become a fiber property `_debugSource`.
- *     https://github.com/facebook/react/blob/master/packages/react-reconciler/src/ReactFiber.new.js#L634
+ *     https://github.com/facebook/react/blob/v18.0.0/packages/react-reconciler/src/ReactFiber.new.js#L648-L649
  */
 export const getCodeInfoFromDebugSource = (fiber?: Fiber): CodeInfo | undefined => {
   if (!fiber?._debugSource) return undefined
