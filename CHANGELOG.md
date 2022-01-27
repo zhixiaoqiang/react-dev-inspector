@@ -1,5 +1,24 @@
 # Changelog
 
+
+## [1.8.0](https://github.com/zthxxx/react-dev-inspector/compare/v1.7.1...v1.8.0) (2021-04-18)
+
+
+### feat
+
+* update `ReactInspectorPlugin` for compatible with `webpack` v5 and v4 ([914b12c](https://github.com/zthxxx/react-dev-inspector/commit/914b12c74bce2141fdabbea73c1c7b79e276e414))
+
+### docs
+
+* update docs for use with `create-react-app` v5, `webpack` v5 and `webpack-dev-server` v4 ([914b12c](https://github.com/zthxxx/react-dev-inspector/commit/914b12c74bce2141fdabbea73c1c7b79e276e414))
+
+### chore
+
+* upgrade `create-react-app` to v5 and update example project config file ([914b12c](https://github.com/zthxxx/react-dev-inspector/commit/914b12c74bce2141fdabbea73c1c7b79e276e414))
+* upgrade `vite` and `@vitejs/plugin-react`, update example project config file ([914b12c](https://github.com/zthxxx/react-dev-inspector/commit/914b12c74bce2141fdabbea73c1c7b79e276e414))
+
+
+
 ## [1.7.1](https://github.com/zthxxx/react-dev-inspector/compare/v1.7.0...v1.7.1) (2021-11-02)
 
 
