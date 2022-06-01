@@ -31,11 +31,61 @@ npm i -D react-dev-inspector
 
 ## Usage
 
-Users need to add **React component** and apply **webpack config** before connecting your React project with 'react-dev-inspector'.
-
-> Note: You should NOT use this package, and **React component**, **webpack config** in production mode
-
 <br />
+
+### for VSCode only, but simple without any other configuration
+
+Works with almost all react frameworks such as
+  [Vite](https://github.com/vitejs/vite/tree/main/packages/plugin-react),
+  [Next.js](https://nextjs.org/),
+  [Create React App](https://create-react-app.dev/),
+  [Umi3](https://umijs.org/),
+  [Ice.js](https://ice.work/),
+
+or any other which use [@babel/plugin-transform-react-jsx-source](https://github.com/babel/babel/tree/master/packages/babel-plugin-transform-react-jsx-source) in builtin.
+Just follow the component code below:
+
+
+```tsx
+import React from 'react'
+import { Inspector, InspectParams } from 'react-dev-inspector'
+
+const isDev = process.env.NODE_ENV === 'development'
+
+export const Layout = () => {
+  // ...
+
+  return (
+    <>
+      <YourComponent />
+
+      {isDev && (
+        <Inspector
+          // props see docs:
+          // https://github.com/zthxxx/react-dev-inspector#inspector-component-props
+          keys={['control', 'shift', 'command', 'c']}
+          disableLaunchEditor={true}
+          onClickElement={({ codeInfo }: InspectParams) => {
+            if (!codeInfo?.absolutePath) return
+            const { absolutePath, lineNumber, columnNumber } = codeInfo
+            // you can change the url protocol if you are using in Web IDE
+            window.open(`vscode://file/${absolutePath}:${lineNumber}:${columnNumber}`)
+          }}
+        >
+      )}
+    </>
+  )
+}
+```
+
+-----
+
+Whether you use `vscode://`, `webstorm://` or otherwise, it solidifies in code.
+
+sometime you want it **infer** which is the current local IDE you are using now.
+
+But for generally infer current local IDE, **need some server-side configuration**.
+At this time, follow those two steps below:
 
 ### 1. Add Inspector React Component
 
@@ -43,26 +93,25 @@ Users need to add **React component** and apply **webpack config** before connec
 import React from 'react'
 import { Inspector, InspectParams } from 'react-dev-inspector'
 
-const InspectorWrapper = process.env.NODE_ENV === 'development'
-  ? Inspector
-  : React.Fragment
+const isDev = process.env.NODE_ENV === 'development'
 
 export const Layout = () => {
   // ...
 
   return (
-    <InspectorWrapper
-      // props docs see:
-      // https://github.com/zthxxx/react-dev-inspector#inspector-component-props
-      keys={['control', 'shift', 'command', 'c']}
-      disableLaunchEditor={false}
-      onHoverElement={(params: InspectParams) => {}}
-      onClickElement={(params: InspectParams) => {}}
-    >
-     <YourComponent>
-       ...
-     </YourComponent>
-    </InspectorWrapper>
+    <>
+      <YourComponent />
+
+      {isDev && (
+        <Inspector
+          // props see docs:
+          // https://github.com/zthxxx/react-dev-inspector#inspector-component-props
+          keys={['control', 'shift', 'command', 'c']}
+          onHoverElement={(inspect: InspectParams) => {}}
+          onClickElement={(inspect: InspectParams) => {}}
+        >
+      )}
+    </>
   )
 }
 ```
@@ -95,8 +144,8 @@ If your project happen to use vite / nextjs / create-react-app and so on, you ca
 - [#usage-with-next.js](https://github.com/zthxxx/react-dev-inspector#usage-with-nextjs)
 - [#usage-with-create-react-app](https://github.com/zthxxx/react-dev-inspector#usage-with-create-react-app)
 - [#usage-with-umi3](https://github.com/zthxxx/react-dev-inspector#usage-with-umi3)
-- [#usage-with-umi2](https://github.com/zthxxx/react-dev-inspector#usage-with-umi2) 
-- [#usage-with-ice.js](https://github.com/zthxxx/react-dev-inspector#usage-with-icejs) 
+- [#usage-with-umi2](https://github.com/zthxxx/react-dev-inspector#usage-with-umi2)
+- [#usage-with-ice.js](https://github.com/zthxxx/react-dev-inspector#usage-with-icejs)
 
 
 
@@ -152,7 +201,7 @@ const config: Configuration = {
       middlewares.unshift(launchEditorMiddleware)
       return middlewares
     },
-    
+
     /**
      * react-dev-inspector - dev server config
      * for create-react-app@^4 + webpack-dev-server@^3
@@ -388,13 +437,13 @@ export default {
     const originBefore = config.toConfig().devServer
 
     config.devServer.before((app, server, compiler) => {
-      
+
       app.use(launchEditorMiddleware)
-      
+
       originBefore?.before?.(app, server, compiler)
     })
 
-    return config  
+    return config
   },
 }
 ```

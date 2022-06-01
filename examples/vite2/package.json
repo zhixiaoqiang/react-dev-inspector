@@ -30,7 +30,7 @@
   },
   "devDependencies": {
     "@babel/core": "7.15.5",
-    "@emotion/babel-preset-css-prop": "11.2.0",
+    "@emotion/babel-plugin": "^11.9.2",
     "@types/node": "14.17.17",
     "@types/react": "17.0.22",
     "@types/react-dom": "17.0.9",

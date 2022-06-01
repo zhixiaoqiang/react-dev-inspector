@@ -18,6 +18,19 @@ export default defineConfig({
   plugins: [
     react({
       jsxRuntime: 'classic',
+      babel: {
+        plugins: [
+          [
+            // https://github.com/emotion-js/emotion/tree/main/packages/babel-plugin#options
+            '@emotion/babel-plugin',
+            {
+              sourceMap: true,
+              autoLabel: 'always',
+              labelFormat: '[local]',
+            },
+          ],
+        ],
+      },
     }),
     // this `onlineDemoBuildPlugin` only for prod build with online demo site
     onlineDemoBuildPlugin(),

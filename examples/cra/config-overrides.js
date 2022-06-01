@@ -37,10 +37,12 @@ module.exports = {
     removeModuleScopePlugin(),
     ...addBabelPresets(
       [
-        // https://github.com/emotion-js/emotion/tree/master/packages/babel-preset-css-prop#options
-        '@emotion/babel-preset-css-prop',
+        // https://github.com/emotion-js/emotion/tree/main/packages/babel-plugin#options
+        '@emotion/babel-plugin',
         {
+          sourceMap: true,
           autoLabel: 'always',
+          labelFormat: '[local]',
         },
       ],
     ),
