@@ -1,6 +1,21 @@
 # Changelog
 
 
+## [1.8.1](https://github.com/zthxxx/react-dev-inspector/compare/v1.8.0...v1.8.1) (2021-06-15)
+
+### fix
+
+* `@babel/types` should be listed in dependencies instead of devDependencies, close #127 ([4aa7072](https://github.com/zthxxx/react-dev-inspector/commit/4aa7072036aaa6a5de53b51636d7bfaea41a8b88))
+
+### docs
+
+* add docs for VSCode only, simple without any other configuration ([884d576](https://github.com/zthxxx/react-dev-inspector/commit/884d576a2f04dee98455ae5d16c748c963d38780))
+
+### chore
+
+* update all non-major dependencies
+
+
 ## [1.8.0](https://github.com/zthxxx/react-dev-inspector/compare/v1.7.1...v1.8.0) (2021-04-18)
 
 
