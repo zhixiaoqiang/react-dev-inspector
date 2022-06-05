@@ -85,7 +85,7 @@ Whether you use `vscode://`, `webstorm://` or otherwise, it solidifies in code.
 sometime you want it **infer** which is the current local IDE you are using now.
 
 But for generally infer current local IDE, **need some server-side configuration**.
-At this time, follow those two steps below:
+At this time, follow those **TWO steps** below:
 
 ### 1. Add Inspector React Component
 
@@ -153,6 +153,9 @@ If your project happen to use vite / nextjs / create-react-app and so on, you ca
 
 Support webpack v4 and v5, examples see:
 
+<details>
+<summary>.babelrc.js</summary><br>
+
 ```js
 // .babelrc.js
 module.exports = {
@@ -165,6 +168,11 @@ module.exports = {
   ],
 }
 ```
+
+<br></details>
+
+<details>
+<summary>webpack.config.ts</summary><br>
 
 ```ts
 // webpack.config.ts
@@ -184,7 +192,12 @@ const config: Configuration = {
 }
 ```
 
+<br></details>
+
 However, if you want more manully config with `webpack-dev-server`, here are some equivalent:
+
+<details>
+<summary>webpack.config.ts</summary><br>
 
 ```ts
 // webpack.config.ts
@@ -215,13 +228,15 @@ const config: Configuration = {
 }
 ```
 
-<br />
+<br></details>
+
 
 #### usage with [Vite2](https://vitejs.dev)
 
 > example project see: https://github.com/zthxxx/react-dev-inspector/tree/master/examples/vite2
 
-example `vite.config.ts`:
+<details>
+<summary>vite.config.ts</summary><br>
 
 ```ts
 import { defineConfig } from 'vite'
@@ -241,7 +256,8 @@ export default defineConfig({
 })
 ```
 
-<br />
+<br></details>
+
 
 #### usage with [Next.js](https://nextjs.org/)
 
@@ -249,7 +265,8 @@ use Next.js [Custom Server](https://nextjs.org/docs/advanced-features/custom-ser
 
 > example project see: https://github.com/zthxxx/react-dev-inspector/tree/master/examples/nextjs
 
-in `server.js`, example:
+<details>
+<summary>server.js</summary><br>
 
 ```js
 ...
@@ -291,7 +308,10 @@ app.prepare().then(() => {
 })
 ```
 
-in `package.json`, example:
+<br></details>
+
+<details>
+<summary>package.json</summary><br>
 
 ```diff
   "scripts": {
@@ -301,7 +321,10 @@ in `package.json`, example:
   }
 ```
 
-in `.babelrc.js`, example:
+<br></details>
+
+<details>
+<summary>.babelrc.js</summary><br>
 
 ```js
 module.exports = {
@@ -315,7 +338,8 @@ module.exports = {
 }
 ```
 
-<br />
+<br></details>
+
 
 #### usage with create-react-app
 
@@ -324,6 +348,9 @@ create-react-app + [react-app-rewired](https://github.com/timarney/react-app-rew
 > example project see: https://github.com/zthxxx/react-dev-inspector/tree/master/examples/cra
 
 Support create-react-app v4, v5, example config see:
+
+<details>
+<summary>config-overrides.js</summary><br>
 
 ```ts
 const {
@@ -385,13 +412,15 @@ module.exports = {
 }
 ```
 
-<br />
+<br></details>
+
 
 #### usage with [Umi3](https://umijs.org/)
 
 > example project see: https://github.com/zthxxx/react-dev-inspector/tree/master/examples/umi3
 
-Example `.umirc.dev.ts`:
+<details>
+<summary>.umirc.dev.ts</summary><br>
 
 ```ts
 // https://umijs.org/config/
@@ -409,11 +438,13 @@ export default defineConfig({
 })
 ```
 
-<br />
+<br></details>
+
 
 #### usage with [Umi2](https://v2.umijs.org)
 
-Example `.umirc.dev.js`:
+<details>
+<summary>.umirc.dev.ts</summary><br>
 
 ```js
 import { launchEditorMiddleware } from 'react-dev-inspector/plugins/webpack'
@@ -448,9 +479,13 @@ export default {
 }
 ```
 
+<br></details>
+
+
 #### usage with [Ice.js](https://ice.work/)
 
-Example `build.json`:
+<details>
+<summary>build.json</summary><br>
 
 ```ts
 // https://ice.work/docs/guide/basic/build
@@ -461,6 +496,7 @@ Example `build.json`:
 }
 ```
 
+<br></details>
 
 <br />
 

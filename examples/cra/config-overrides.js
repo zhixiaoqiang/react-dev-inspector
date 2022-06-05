@@ -8,7 +8,6 @@ const {
   addWebpackResolve,
   addWebpackAlias,
   addBabelPlugin,
-  addBabelPresets,
   addWebpackPlugin,
   removeModuleScopePlugin,
 } = require('customize-cra')
@@ -27,25 +26,20 @@ module.exports = {
     addWebpackResolve({
       symlinks: false,
     }),
-    addWebpackAlias({
-      react: require.resolve('react'),
-    }),
     /**
      * avoid require react path error like:
      *   "You can either move it inside src/, or add a symlink to it from project's node_modules/""
      */
     removeModuleScopePlugin(),
-    ...addBabelPresets(
-      [
-        // https://github.com/emotion-js/emotion/tree/main/packages/babel-plugin#options
-        '@emotion/babel-plugin',
-        {
-          sourceMap: true,
-          autoLabel: 'always',
-          labelFormat: '[local]',
-        },
-      ],
-    ),
+    addBabelPlugin([
+      // https://github.com/emotion-js/emotion/tree/main/packages/babel-plugin#options
+      '@emotion/babel-plugin',
+      {
+        sourceMap: true,
+        autoLabel: 'always',
+        labelFormat: '[local]',
+      },
+    ]),
 
     /** react-dev-inspector - babel config */
     addBabelPlugin([

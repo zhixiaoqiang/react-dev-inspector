@@ -11,9 +11,6 @@ export default defineConfig({
   },
   resolve: {
     preserveSymlinks: true,
-    alias: {
-      react: require.resolve('react'),
-    },
   },
   plugins: [
     react({

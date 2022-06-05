@@ -2,6 +2,9 @@
 module.exports = {
   presets: [
     'next/babel',
+  ],
+
+  plugins: [
     [
       // https://github.com/emotion-js/emotion/tree/main/packages/babel-plugin#options
       '@emotion/babel-plugin',
@@ -11,9 +14,7 @@ module.exports = {
         labelFormat: '[local]',
       },
     ],
-  ],
 
-  plugins: [
     /**
      * react-dev-inspector plugin, options docs see:
      * https://github.com/zthxxx/react-dev-inspector#inspector-babel-plugin-options

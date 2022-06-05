@@ -2,7 +2,7 @@
   "compilerOptions": {
     "module": "esnext",
     "baseUrl": ".",
-    "jsx": "react-jsx",
+    "jsx": "preserve",
     "esModuleInterop": true,
     "lib": [
       "dom.iterable",

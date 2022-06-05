@@ -9,14 +9,11 @@ export default defineConfig({
     type: 'browser',
   },
   publicPath: '/umi3/',
-  alias: {
-    react: require.resolve('react'),
-  },
   ignoreMomentLocale: true,
   targets: {
     chrome: 80,
   },
-  extraBabelPresets: [
+  extraBabelPlugins: [
     [
       // https://github.com/emotion-js/emotion/tree/main/packages/babel-plugin#options
       '@emotion/babel-plugin',

@@ -7,8 +7,6 @@ module.exports = {
   webpack: (config) => {
     config.resolve.symlinks = false
 
-    config.resolve.alias.react = require.resolve('react')
-
     return config
   },
 }
