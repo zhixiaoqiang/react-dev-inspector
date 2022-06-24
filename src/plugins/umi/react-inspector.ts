@@ -40,7 +40,8 @@ export default function inspectorPlugin(api: IApi) {
   }
   // @ts-ignore
   if (typeof api!.addExtraBabelPlugins === 'function') {
-    api.addBeforeBabelPlugins(() => babelOpts)
+    // @ts-ignore
+    api!.addBeforeBabelPlugins(() => babelOpts)
   }
 
   /**
