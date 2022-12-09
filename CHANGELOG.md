@@ -1,13 +1,6 @@
 # Changelog
 
 
-## [1.8.3](https://github.com/zthxxx/react-dev-inspector/compare/v1.8.2...v1.8.3) (2022-10-17)
-
-### feat
-
-* compatible with `umi3`/`umi4` `addBeforeMiddlewares`/`addBeforeMiddewares` plugin api ([99ff088](https://github.com/zthxxx/react-dev-inspector/commit/99ff088ec6b461135c07c276dba07090c6bb74b7))
-
-
 ## [1.8.2](https://github.com/zthxxx/react-dev-inspector/compare/v1.8.1...v1.8.2) (2022-10-17)
 
 ### feat
