@@ -13,24 +13,25 @@ const isDev = process.env.NODE_ENV === 'development'
 
 export const HomePage = () => {
   return (
-    <Inspector
-      disableLaunchEditor={!isDev}
-      onClickElement={(inspect: InspectParams) => {
-        console.debug(inspect)
-        if (isDev || !inspect.codeInfo?.relativePath) return
+    <React.StrictMode>
+      <Inspector
+        disableLaunchEditor={!isDev}
+        onClickElement={(inspect: InspectParams) => {
+          console.debug(inspect)
+          if (isDev || !inspect.codeInfo?.relativePath) return
 
-        const {
-          relativePath,
-          lineNumber,
-        } = inspect.codeInfo
+          const {
+            relativePath,
+            lineNumber,
+          } = inspect.codeInfo
 
-        window.open(
-          `${projectRepo}/blob/master/examples/umi3/${relativePath}#L${lineNumber}`,
-        )
-      }}
-    >
+          window.open(
+            `${projectRepo}/blob/master/examples/umi3/${relativePath}#L${lineNumber}`,
+          )
+        }}
+      />
+
       <Global styles={S.globalCss} />
-
 
       <S.Base>
         <S.GithubCorner
@@ -56,7 +57,7 @@ export const HomePage = () => {
           <Keypress>C</Keypress>
         </KeyPad>
       </S.Base>
-    </Inspector>
+    </React.StrictMode>
   )
 }
 

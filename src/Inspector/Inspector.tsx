@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, ReactElement } from 'react'
+import React, { useEffect, useRef } from 'react'
 import type { Fiber } from 'react-reconciler'
 import hotkeys, { KeyHandler } from 'hotkeys-js'
 import { setupHighlighter } from './utils/highlight'
@@ -153,5 +153,5 @@ export const Inspector: React.FC<InspectorProps> = (props) => {
     }
   }, [hotkey])
 
-  return children as ReactElement
+  return (<>{children ?? null}</>)
 }

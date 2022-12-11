@@ -10,9 +10,9 @@ node_modules
 .umirc.local.ts
 
 dist
-/build
-/es
-/lib
+build
+es
+lib
 /plugins
 
 /site
@@ -24,3 +24,6 @@ coverage/
 
 // vscode history
 .history
+
+.next
+next-env.d.ts

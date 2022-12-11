@@ -21,27 +21,44 @@ export default function inspectorPlugin(api: IApi) {
     enableBy: api.EnableBy.register,
   })
 
-  api.modifyBabelOpts((babelOptions) => {
-    babelOptions.plugins.unshift([
-      'react-dev-inspector/plugins/babel',
-      {
-        cwd: inspectorConfig?.cwd,
-        excludes: [
-          /\.umi(-production)?\//,
-          ...inspectorConfig?.excludes ?? [],
-        ],
-      },
+  // umi4
+  // @ts-ignore
+  if (api.addBeforeBabelPlugins) {
+    // @ts-ignore
+    api.addBeforeBabelPlugins(() => [
+      [
+        require.resolve('@react-dev-inspector/babel-plugin'),
+        {
+          cwd: inspectorConfig?.cwd,
+          excludes: [
+            /\.umi(-production)?\//,
+            ...inspectorConfig?.excludes ?? [],
+          ],
+        },
+      ],
     ])
-    return babelOptions
-  })
+  } else {
+    // umi3
+    api.modifyBabelOpts((babelOptions) => {
+      babelOptions.plugins.unshift([
+        'react-dev-inspector/plugins/babel',
+        {
+          cwd: inspectorConfig?.cwd,
+          excludes: [
+            /\.umi(-production)?\//,
+            ...inspectorConfig?.excludes ?? [],
+          ],
+        },
+      ])
+      return babelOptions
+    })
+  }
 
-  /**
-   * Inspector component open file into IDE via `/__open-stack-frame-in-editor/relative` api,
-   * which is created by `errorOverlayMiddleware` and
-   * defined in 'react-dev-utils/launchEditorEndpoint'
-   *
-   * due to umi3 not use webpack devServer,
-   * so need add launch editor middleware manually
-   */
-  api.addBeforeMiddewares(createLaunchEditorMiddleware)
+  // umi4 & umi3
+  if (api.addBeforeMiddlewares) {
+    api.addBeforeMiddlewares(createLaunchEditorMiddleware)
+  } else {
+    // legacy umi3
+    api.addBeforeMiddewares(createLaunchEditorMiddleware)
+  }
 }
