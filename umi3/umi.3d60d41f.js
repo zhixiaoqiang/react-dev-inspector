@@ -3610,7 +3610,7 @@ const Inspector = (props) => {
             delete window.__REACT_DEV_INSPECTOR_TOGGLE__;
         };
     }, [hotkey]);
-    return children;
+    return (react_default.a.createElement(react_default.a.Fragment, null, children !== null && children !== void 0 ? children : null));
 };
 
 // CONCATENATED MODULE: /home/runner/work/react-dev-inspector/react-dev-inspector/node_modules/@emotion/styled/node_modules/@babel/runtime/helpers/esm/extends.js
@@ -4113,9 +4113,13 @@ var styles_GithubCorner = /*#__PURE__*/emotion_styled_base_browser_esm(GithubCor
 var projectRepo = 'https://github.com/zthxxx/react-dev-inspector';
 var isDev = "production" === 'development';
 var HomePage = () => {
-  return /*#__PURE__*/react_default.a.createElement(Inspector, {
+  return /*#__PURE__*/react_default.a.createElement(react_default.a.StrictMode, {
     "data-inspector-line": "16",
     "data-inspector-column": "4",
+    "data-inspector-relative-path": "src/layouts/index.tsx"
+  }, /*#__PURE__*/react_default.a.createElement(Inspector, {
+    "data-inspector-line": "17",
+    "data-inspector-column": "6",
     "data-inspector-relative-path": "src/layouts/index.tsx",
     disableLaunchEditor: !isDev,
     onClickElement: inspect => {
@@ -4128,62 +4132,62 @@ var HomePage = () => {
           lineNumber = _inspect$codeInfo2.lineNumber;
       window.open("".concat(projectRepo, "/blob/master/examples/umi3/").concat(relativePath, "#L").concat(lineNumber));
     }
-  }, /*#__PURE__*/react_default.a.createElement(Global, {
-    "data-inspector-line": "32",
+  }), /*#__PURE__*/react_default.a.createElement(Global, {
+    "data-inspector-line": "34",
     "data-inspector-column": "6",
     "data-inspector-relative-path": "src/layouts/index.tsx",
     styles: globalCss
   }), /*#__PURE__*/react_default.a.createElement(Base, {
-    "data-inspector-line": "35",
+    "data-inspector-line": "36",
     "data-inspector-column": "6",
     "data-inspector-relative-path": "src/layouts/index.tsx"
   }, /*#__PURE__*/react_default.a.createElement(styles_GithubCorner, {
-    "data-inspector-line": "36",
+    "data-inspector-line": "37",
     "data-inspector-column": "8",
     "data-inspector-relative-path": "src/layouts/index.tsx",
     href: projectRepo
   }), /*#__PURE__*/react_default.a.createElement(Title, {
-    "data-inspector-line": "40",
+    "data-inspector-line": "41",
     "data-inspector-column": "8",
     "data-inspector-relative-path": "src/layouts/index.tsx"
   }, /*#__PURE__*/react_default.a.createElement("span", {
-    "data-inspector-line": "41",
+    "data-inspector-line": "42",
     "data-inspector-column": "10",
     "data-inspector-relative-path": "src/layouts/index.tsx"
   }, "React Dev Inspector")), /*#__PURE__*/react_default.a.createElement(Slogan, {
-    "data-inspector-line": "44",
+    "data-inspector-line": "45",
     "data-inspector-column": "8",
     "data-inspector-relative-path": "src/layouts/index.tsx"
   }, /*#__PURE__*/react_default.a.createElement("p", {
-    "data-inspector-line": "45",
+    "data-inspector-line": "46",
     "data-inspector-column": "10",
     "data-inspector-relative-path": "src/layouts/index.tsx"
   }, "Quick jump to local IDE source code directly from browser React component by just a simple click!"), /*#__PURE__*/react_default.a.createElement("p", {
-    "data-inspector-line": "46",
+    "data-inspector-line": "47",
     "data-inspector-column": "10",
     "data-inspector-relative-path": "src/layouts/index.tsx"
   }, /*#__PURE__*/react_default.a.createElement("small", {
-    "data-inspector-line": "46",
+    "data-inspector-line": "47",
     "data-inspector-column": "13",
     "data-inspector-relative-path": "src/layouts/index.tsx"
   }, "( for this prod online demo page, jump to GitHub file )"))), /*#__PURE__*/react_default.a.createElement(Keypress_KeyPad, {
-    "data-inspector-line": "49",
+    "data-inspector-line": "50",
     "data-inspector-column": "8",
     "data-inspector-relative-path": "src/layouts/index.tsx"
   }, /*#__PURE__*/react_default.a.createElement(Keypress, {
-    "data-inspector-line": "50",
+    "data-inspector-line": "51",
     "data-inspector-column": "10",
     "data-inspector-relative-path": "src/layouts/index.tsx"
   }, "Ctrl \u2303"), "+", /*#__PURE__*/react_default.a.createElement(Keypress, {
-    "data-inspector-line": "52",
+    "data-inspector-line": "53",
     "data-inspector-column": "10",
     "data-inspector-relative-path": "src/layouts/index.tsx"
   }, "Shift \u21E7"), "+", /*#__PURE__*/react_default.a.createElement(Keypress, {
-    "data-inspector-line": "54",
+    "data-inspector-line": "55",
     "data-inspector-column": "10",
     "data-inspector-relative-path": "src/layouts/index.tsx"
   }, "Command \u2318"), "+", /*#__PURE__*/react_default.a.createElement(Keypress, {
-    "data-inspector-line": "56",
+    "data-inspector-line": "57",
     "data-inspector-column": "10",
     "data-inspector-relative-path": "src/layouts/index.tsx"
   }, "C"))));
