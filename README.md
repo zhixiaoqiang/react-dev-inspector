@@ -26,7 +26,7 @@ screen record gif (8M size):
 ## Installation
 
 ```bash
-npm i -D react-dev-inspector
+npm i react-dev-inspector
 ```
 
 ## Usage
@@ -71,7 +71,7 @@ export const Layout = () => {
             // you can change the url protocol if you are using in Web IDE
             window.open(`vscode://file/${absolutePath}:${lineNumber}:${columnNumber}`)
           }}
-        >
+        />
       )}
     </>
   )
@@ -109,7 +109,7 @@ export const Layout = () => {
           keys={['control', 'shift', 'command', 'c']}
           onHoverElement={(inspect: InspectParams) => {}}
           onClickElement={(inspect: InspectParams) => {}}
-        >
+        />
       )}
     </>
   )
