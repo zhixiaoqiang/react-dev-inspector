@@ -1,6 +1,19 @@
 # Changelog
 
 
+## [1.8.6](https://github.com/zthxxx/react-dev-inspector/compare/v1.8.1...v1.8.6) (2023-07-06)
+
+### feat
+
+* try to compatible `umi4` with `addBeforeBabelPlugins` api
+
+
+### fix
+
+* fix `Inspector` component with non-children to render
+
+
+
 ## [1.8.4](https://github.com/zthxxx/react-dev-inspector/compare/v1.8.1...v1.8.4) (2022-12-09)
 
 ### revert

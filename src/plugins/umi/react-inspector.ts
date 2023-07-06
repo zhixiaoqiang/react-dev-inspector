@@ -22,6 +22,7 @@ export default function inspectorPlugin(api: IApi) {
   })
 
   // umi4
+  // https://umijs.org/docs/api/plugin-api#addbeforebabelplugins
   // @ts-ignore
   if (api.addBeforeBabelPlugins) {
     // @ts-ignore
@@ -55,10 +56,11 @@ export default function inspectorPlugin(api: IApi) {
   }
 
   // umi4 & umi3
+  // https://umijs.org/docs/api/plugin-api#addbeforemiddlewares
   if (api.addBeforeMiddlewares) {
     api.addBeforeMiddlewares(createLaunchEditorMiddleware)
   } else {
-    // legacy umi3
+    // legacy and typo in umi3
     api.addBeforeMiddewares(createLaunchEditorMiddleware)
   }
 }
