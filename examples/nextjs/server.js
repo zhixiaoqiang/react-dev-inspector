@@ -1,7 +1,6 @@
 const { createServer } = require('http')
 const next = require('next')
 const {
-  queryParserMiddleware,
   launchEditorMiddleware,
 } = require('react-dev-inspector/plugins/webpack')
 
@@ -19,7 +18,6 @@ app.prepare().then(() => {
       /**
        * react-dev-inspector configuration two middlewares for nextjs
        */
-      queryParserMiddleware,
       launchEditorMiddleware,
 
       /** Next.js default app handle */

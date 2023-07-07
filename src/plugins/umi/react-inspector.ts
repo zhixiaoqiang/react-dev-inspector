@@ -28,7 +28,7 @@ export default function inspectorPlugin(api: IApi) {
     // @ts-ignore
     api.addBeforeBabelPlugins(() => [
       [
-        require.resolve('@react-dev-inspector/babel-plugin'),
+        require.resolve('react-dev-inspector/plugins/babel'),
         {
           cwd: inspectorConfig?.cwd,
           excludes: [

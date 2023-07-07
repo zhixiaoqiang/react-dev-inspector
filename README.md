@@ -38,8 +38,9 @@ npm i react-dev-inspector
 Works with almost all react frameworks such as
   [Vite](https://github.com/vitejs/vite/tree/main/packages/plugin-react),
   [Next.js](https://nextjs.org/),
+  [Rspack](https://www.rspack.dev/),
+  [Umi4 / Umi3](https://umijs.org/),
   [Create React App](https://create-react-app.dev/),
-  [Umi3](https://umijs.org/),
   [Ice.js](https://ice.work/),
 
 or any other which use [@babel/plugin-transform-react-jsx-source](https://github.com/babel/babel/tree/master/packages/babel-plugin-transform-react-jsx-source) in builtin.
@@ -68,8 +69,11 @@ export const Layout = () => {
           onClickElement={({ codeInfo }: InspectParams) => {
             if (!codeInfo?.absolutePath) return
             const { absolutePath, lineNumber, columnNumber } = codeInfo
-            // you can change the url protocol if you are using in Web IDE
+
             window.open(`vscode://file/${absolutePath}:${lineNumber}:${columnNumber}`)
+
+            // you can change the url protocol if you are using another IDE, like for WebStorm:
+            // window.open(`webstorm://open?file=${absolutePath}&line=${lineNumber}&column=${columnNumber}`)
           }}
         />
       )}
@@ -80,12 +84,14 @@ export const Layout = () => {
 
 -----
 
-Whether you use `vscode://`, `webstorm://` or otherwise, it solidifies in code.
+Whether you use `vscode://`, `webstorm://`, or another protocol, it's hardcoded in the code.
 
-sometime you want it **infer** which is the current local IDE you are using now.
+Sometime you want it **infer** which is the current local IDE you or your different team member are using now.
 
-But for generally infer current local IDE, **need some server-side configuration**.
-At this time, follow those **TWO steps** below:
+Sometimes, you might want it to **infer the current local IDE** that you or your team members are using.
+
+To generally infer the current local IDE, **server-side configuration is required**.
+Follow the **TWO steps** below:
 
 ### 1. Add Inspector React Component
 
@@ -106,9 +112,9 @@ export const Layout = () => {
         <Inspector
           // props see docs:
           // https://github.com/zthxxx/react-dev-inspector#inspector-component-props
-          keys={['control', 'shift', 'command', 'c']}
-          onHoverElement={(inspect: InspectParams) => {}}
-          onClickElement={(inspect: InspectParams) => {}}
+          // keys={['control', 'shift', 'command', 'c']}
+          // onHoverElement={(inspect: InspectParams) => {}}
+          // onClickElement={(inspect: InspectParams) => {}}
         />
       )}
     </>
@@ -120,17 +126,21 @@ export const Layout = () => {
 
 ### 2. Set up Inspector Config
 
-You should add:
+In server side, You need to add:
 
-- an inspector **babel plugin**, to inject source code location info
-  - `react-dev-inspector/plugins/babel`
-- an server **api middleware**, to open local IDE
+- an **server middleware**, to open local IDE
   - `import { launchEditorMiddleware } from 'react-dev-inspector/plugins/webpack'`
+- an _OPTIONAL_ inspector **babel plugin**, to inject source code location info (_relative path_)
+  - `react-dev-inspector/plugins/babel`
 
 to your current project development config.
 
-Such as add **babel plugin** into your `.babelrc` or webpack `babel-loader` config,
-add **api middleware** into your `webpack-dev-server` config or other server setup.
+Such as add **server middleware** into your `webpack-dev-server` config or other server setup,
+add the **babel plugin** (optional) into your `.babelrc` or webpack `babel-loader` config.
+
+> Note: The `react-dev-inspector/plugins/babel` is **optional**. Most React frameworks/scaffolds already integrate the [@babel/plugin-transform-react-jsx-source](https://github.com/babel/babel/tree/master/packages/babel-plugin-transform-react-jsx-source) or an equivalent in `swc` to inject the **_absolute path_** for source code on React Fiber,
+>
+> while the `react-dev-inspector`'s plugin refining to inject the **_relative path_** on DOM for brevity and clarity to debug.
 
 <br />
 
@@ -142,6 +152,7 @@ If your project happen to use vite / nextjs / create-react-app and so on, you ca
 
 - [#usage-with-vite2](https://github.com/zthxxx/react-dev-inspector#usage-with-vite2)
 - [#usage-with-next.js](https://github.com/zthxxx/react-dev-inspector#usage-with-nextjs)
+- [#usage-with-rspack](https://github.com/zthxxx/react-dev-inspector#usage-with-rspack)
 - [#usage-with-create-react-app](https://github.com/zthxxx/react-dev-inspector#usage-with-create-react-app)
 - [#usage-with-umi3](https://github.com/zthxxx/react-dev-inspector#usage-with-umi3)
 - [#usage-with-umi2](https://github.com/zthxxx/react-dev-inspector#usage-with-umi2)
@@ -149,27 +160,9 @@ If your project happen to use vite / nextjs / create-react-app and so on, you ca
 
 
 
-#### raw webpack config
+#### Raw Webpack Config
 
 Support webpack v4 and v5, examples see:
-
-<details>
-<summary>.babelrc.js</summary><br>
-
-```js
-// .babelrc.js
-module.exports = {
-  plugins: [
-    /**
-     * react-dev-inspector plugin, options docs see:
-     * https://github.com/zthxxx/react-dev-inspector#inspector-babel-plugin-options
-     */
-    'react-dev-inspector/plugins/babel',
-  ],
-}
-```
-
-<br></details>
 
 <details>
 <summary>webpack.config.ts</summary><br>
@@ -192,12 +185,12 @@ const config: Configuration = {
 }
 ```
 
-<br></details>
+</details><br />
 
-However, if you want more manully config with `webpack-dev-server`, here are some equivalent:
+However, if you want more manually config with `webpack-dev-server`, here are some equivalent:
 
 <details>
-<summary>webpack.config.ts</summary><br>
+<summary>webpack.config.ts (for webpack-dev-server)</summary><br>
 
 ```ts
 // webpack.config.ts
@@ -208,7 +201,7 @@ const config: Configuration = {
   devServer: {
     /**
      * react-dev-inspector - dev server config
-     * for create-react-app@^5 + webpack-dev-server@^4.7
+     * for webpack-dev-server@^4
      */
     setupMiddlewares: (middlewares, devServer) => {
       middlewares.unshift(launchEditorMiddleware)
@@ -217,7 +210,7 @@ const config: Configuration = {
 
     /**
      * react-dev-inspector - dev server config
-     * for create-react-app@^4 + webpack-dev-server@^3
+     * for webpack-dev-server@^3
      */
     before: (app, server, compiler) => {
       app.use(launchEditorMiddleware)
@@ -228,10 +221,31 @@ const config: Configuration = {
 }
 ```
 
-<br></details>
+</details>
 
 
-#### usage with [Vite2](https://vitejs.dev)
+<details>
+<summary>.babelrc.js</summary><br>
+
+```js
+// .babelrc.js
+module.exports = {
+  plugins: [
+    /**
+     * react-dev-inspector plugin, options docs see:
+     * https://github.com/zthxxx/react-dev-inspector#inspector-babel-plugin-options
+     */
+    'react-dev-inspector/plugins/babel',
+  ],
+}
+```
+
+</details><br />
+
+
+#### Usage with [Vite2](https://vitejs.dev)
+
+compatible with vite@3 / vite@4.
 
 > example project see: https://github.com/zthxxx/react-dev-inspector/tree/master/examples/vite2
 
@@ -256,10 +270,10 @@ export default defineConfig({
 })
 ```
 
-<br></details>
+</details><br />
 
 
-#### usage with [Next.js](https://nextjs.org/)
+#### Usage with [Next.js](https://nextjs.org/)
 
 use Next.js [Custom Server](https://nextjs.org/docs/advanced-features/custom-server) + [Customizing Babel Config](https://nextjs.org/docs/advanced-features/customizing-babel-config)
 
@@ -272,7 +286,6 @@ use Next.js [Custom Server](https://nextjs.org/docs/advanced-features/custom-ser
 ...
 
 const {
-  queryParserMiddleware,
   launchEditorMiddleware,
 } = require('react-dev-inspector/plugins/webpack')
 
@@ -285,7 +298,6 @@ app.prepare().then(() => {
       /**
        * react-dev-inspector configuration, two middlewares for nextjs
        */
-      queryParserMiddleware,
       launchEditorMiddleware,
 
       /** Next.js default app handle */
@@ -308,7 +320,7 @@ app.prepare().then(() => {
 })
 ```
 
-<br></details>
+</details>
 
 <details>
 <summary>package.json</summary><br>
@@ -321,7 +333,7 @@ app.prepare().then(() => {
   }
 ```
 
-<br></details>
+</details>
 
 <details>
 <summary>.babelrc.js</summary><br>
@@ -338,10 +350,36 @@ module.exports = {
 }
 ```
 
-<br></details>
+</details><br />
+
+#### Usage with [Rspack](https://www.rspack.dev)
 
 
-#### usage with create-react-app
+<details>
+<summary>rspack.config.ts</summary><br>
+
+```ts
+import { defineConfig } from '@rspack/cli'
+import { launchEditorMiddleware } from 'react-dev-inspector/plugins/webpack'
+
+export default defineConfig({
+  devServer: {
+    /**
+     * react-dev-inspector server config for rspack
+     */
+    setupMiddlewares(middlewares) {
+      middlewares.unshift(launchEditorMiddleware)
+      return middlewares
+    },
+  },
+})
+```
+
+</details><br />
+
+
+
+#### Usage with create-react-app
 
 create-react-app + [react-app-rewired](https://github.com/timarney/react-app-rewired) + [customize-cra](https://github.com/arackaf/customize-cra) example `config-overrides.js`:
 
@@ -412,10 +450,10 @@ module.exports = {
 }
 ```
 
-<br></details>
+</details><br />
 
 
-#### usage with [Umi3](https://umijs.org/)
+#### Usage with [Umi3](https://umijs.org/)
 
 > example project see: https://github.com/zthxxx/react-dev-inspector/tree/master/examples/umi3
 
@@ -438,10 +476,10 @@ export default defineConfig({
 })
 ```
 
-<br></details>
+</details><br />
 
 
-#### usage with [Umi2](https://v2.umijs.org)
+#### Usage with [Umi2](https://v2.umijs.org)
 
 <details>
 <summary>.umirc.dev.ts</summary><br>
@@ -479,10 +517,10 @@ export default {
 }
 ```
 
-<br></details>
+</details><br />
 
 
-#### usage with [Ice.js](https://ice.work/)
+#### Usage with [Ice.js](https://ice.work/)
 
 <details>
 <summary>build.json</summary><br>
@@ -496,7 +534,7 @@ export default {
 }
 ```
 
-<br></details>
+</details>
 
 <br />
 
@@ -600,13 +638,14 @@ This package uses `react-dev-utils` to launch your local IDE application, but, w
 
 In fact, it uses an **environment variable** named **`REACT_EDITOR`** to specify an IDE application, but if you do not set this variable, it will try to open a common IDE that you have open or installed once it is certified.
 
-For example, if you want it always open VSCode when inspection clicked, set `export REACT_EDITOR=code` in your shell.
+For example, if you want it always open VSCode when inspection clicked, set `export REACT_EDITOR=code` in your shell config like `.bashrc` or `.zshrc`, don't forget restart shell or IDE to reload the updated environment variable.
 
 <br />
 
 #### VSCode
 
-- install VSCode command line tools, [see the official docs](https://code.visualstudio.com/docs/setup/mac#_launching-from-the-command-line)
+- install VSCode command line tools, [follow the official docs](https://code.visualstudio.com/docs/setup/mac#_launching-from-the-command-line),
+  you need to run the command: `>Shell Command: Install 'code' command in PATH`
   ![install-vscode-cli](./docs/images/install-vscode-cli.png)
 
 - set env to shell, like `.bashrc` or `.zshrc`

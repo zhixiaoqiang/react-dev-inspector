@@ -65,9 +65,14 @@ export const getCodeInfoFromDebugSource = (fiber?: Fiber): CodeInfo | undefined 
       columnNumber: String(columnNumber ?? 1),
 
       /**
-       * fileName in debugSource is absolutely
+       * `fileName` in `_debugSource` is absolutely
+       * ---
+       *
+       * compatible with the incorrect `fileName: "</xxx/file>"` by [rspack](https://github.com/web-infra-dev/rspack)
        */
-      absolutePath: fileName,
+      absolutePath: fileName.match(/^<.*>$/)
+        ? fileName.replace(/^<|>$/g, '')
+        : fileName,
     }
   }
 
