@@ -1,6 +1,24 @@
 # Changelog
 
 
+## [1.9.0](https://github.com/zthxxx/react-dev-inspector/compare/v1.8.6...v1.9.0) (2023-08-14)
+
+### feat
+
+* compatible with the incorrect `fileName: "</xxx/file>"` by [rspack](https://www.rspack.dev/).
+* integrate `queryParserMiddleware` into the `launchEditorMiddleware`, then mark `queryParserMiddleware` as deprecated.
+
+### docs
+
+* add explain for optional babel plugin
+* add example config for rspack
+* add example for webstorm url protocol
+
+### fix
+
+* fix incorrect resolve path in umi4 plugin
+
+
 ## [1.8.6](https://github.com/zthxxx/react-dev-inspector/compare/v1.8.1...v1.8.6) (2023-07-06)
 
 ### feat
