@@ -1,10 +1,10 @@
 {
   "files": {
-    "main.js": "/cra/static/js/main.98da4c9b.js",
+    "main.js": "/cra/static/js/main.2cb2bc96.js",
     "index.html": "/cra/index.html",
-    "main.98da4c9b.js.map": "/cra/static/js/main.98da4c9b.js.map"
+    "main.2cb2bc96.js.map": "/cra/static/js/main.2cb2bc96.js.map"
   },
   "entrypoints": [
-    "static/js/main.98da4c9b.js"
+    "static/js/main.2cb2bc96.js"
   ]
 }
